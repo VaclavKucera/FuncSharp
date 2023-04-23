@@ -62,7 +62,7 @@ namespace FuncSharp
                 e =>
                 {
                     ExceptionDispatchInfo.Capture(otherwise(e)).Throw();
-                    return default;
+                    return default!;
                 }
             );
         }
@@ -78,7 +78,7 @@ namespace FuncSharp
                 e =>
                 {
                     ExceptionDispatchInfo.Capture(e).Throw();
-                    return default;
+                    return default!;
                 }
             );
         }

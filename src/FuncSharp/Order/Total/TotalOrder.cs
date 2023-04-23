@@ -96,7 +96,7 @@ namespace FuncSharp
         /// <summary>
         /// Creates a new interval with the specified bounds.
         /// </summary>
-        public Interval<A> Interval(IntervalBound<A> lowerBound = null, IntervalBound<A> upperBound = null)
+        public Interval<A> Interval(IntervalBound<A>? lowerBound = null, IntervalBound<A>? upperBound = null)
         {
             return Interval(lowerBound.ToOption(), upperBound.ToOption());
         }

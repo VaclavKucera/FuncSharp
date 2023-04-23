@@ -31,7 +31,7 @@ namespace FuncSharp
         /// <summary>
         /// Returns first value or an empty option. 
         /// </summary>
-        public static IOption<T> FirstOption<T>(this IEnumerable<T> source, Func<T, bool> predicate = null)
+        public static IOption<T> FirstOption<T>(this IEnumerable<T> source, Func<T, bool>? predicate = null)
         {
             var data = source.Where(predicate ?? (t => true)).Take(1).ToList();
             if (data.Count == 0)
@@ -44,7 +44,7 @@ namespace FuncSharp
         /// <summary>
         /// Returns last value or an empty option. 
         /// </summary>
-        public static IOption<T> LastOption<T>(this IEnumerable<T> source, Func<T, bool> predicate = null)
+        public static IOption<T> LastOption<T>(this IEnumerable<T> source, Func<T, bool>? predicate = null)
         {
             return source.Reverse().FirstOption(predicate);
         }
@@ -52,7 +52,7 @@ namespace FuncSharp
         /// <summary>
         /// Returns the only value if the source contains just one value, otherwise an empty option.
         /// </summary>
-        public static IOption<T> SingleOption<T>(this IEnumerable<T> source, Func<T, bool> predicate = null)
+        public static IOption<T> SingleOption<T>(this IEnumerable<T> source, Func<T, bool>? predicate = null)
         {
             var data = source.Where(predicate ?? (t => true)).Take(2).ToList();
             if (data.Count == 2)

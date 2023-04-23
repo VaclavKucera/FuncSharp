@@ -123,7 +123,7 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null)
+            Action<T1>? ifFirst = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -225,8 +225,8 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -355,9 +355,9 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -513,10 +513,10 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -699,11 +699,11 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -913,12 +913,12 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -1155,13 +1155,13 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -1425,14 +1425,14 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -1723,15 +1723,15 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -2049,16 +2049,16 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -2403,17 +2403,17 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -2785,18 +2785,18 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -3195,19 +3195,19 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -3633,20 +3633,20 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -4099,21 +4099,21 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null,
-            Action<T15> ifFifteenth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null,
+            Action<T15>? ifFifteenth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -4593,22 +4593,22 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null,
-            Action<T15> ifFifteenth = null,
-            Action<T16> ifSixteenth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null,
+            Action<T15>? ifFifteenth = null,
+            Action<T16>? ifSixteenth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -5115,23 +5115,23 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null,
-            Action<T15> ifFifteenth = null,
-            Action<T16> ifSixteenth = null,
-            Action<T17> ifSeventeenth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null,
+            Action<T15>? ifFifteenth = null,
+            Action<T16>? ifSixteenth = null,
+            Action<T17>? ifSeventeenth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -5665,24 +5665,24 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null,
-            Action<T15> ifFifteenth = null,
-            Action<T16> ifSixteenth = null,
-            Action<T17> ifSeventeenth = null,
-            Action<T18> ifEighteenth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null,
+            Action<T15>? ifFifteenth = null,
+            Action<T16>? ifSixteenth = null,
+            Action<T17>? ifSeventeenth = null,
+            Action<T18>? ifEighteenth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -6243,25 +6243,25 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null,
-            Action<T15> ifFifteenth = null,
-            Action<T16> ifSixteenth = null,
-            Action<T17> ifSeventeenth = null,
-            Action<T18> ifEighteenth = null,
-            Action<T19> ifNineteenth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null,
+            Action<T15>? ifFifteenth = null,
+            Action<T16>? ifSixteenth = null,
+            Action<T17>? ifSeventeenth = null,
+            Action<T18>? ifEighteenth = null,
+            Action<T19>? ifNineteenth = null)
         {
             switch (CoproductDiscriminator)
             {
@@ -6849,26 +6849,26 @@ namespace FuncSharp
         }
 
         public void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null,
-            Action<T15> ifFifteenth = null,
-            Action<T16> ifSixteenth = null,
-            Action<T17> ifSeventeenth = null,
-            Action<T18> ifEighteenth = null,
-            Action<T19> ifNineteenth = null,
-            Action<T20> ifTwentieth = null)
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null,
+            Action<T15>? ifFifteenth = null,
+            Action<T16>? ifSixteenth = null,
+            Action<T17>? ifSeventeenth = null,
+            Action<T18>? ifEighteenth = null,
+            Action<T19>? ifNineteenth = null,
+            Action<T20>? ifTwentieth = null)
         {
             switch (CoproductDiscriminator)
             {

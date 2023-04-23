@@ -58,7 +58,7 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null);
+            Action<T1>? ifFirst = null);
     }
 
     /// <summary>
@@ -101,8 +101,8 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null);
     }
 
     /// <summary>
@@ -157,9 +157,9 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null);
     }
 
     /// <summary>
@@ -226,10 +226,10 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null);
     }
 
     /// <summary>
@@ -308,11 +308,11 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null);
     }
 
     /// <summary>
@@ -403,12 +403,12 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null);
     }
 
     /// <summary>
@@ -511,13 +511,13 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null);
     }
 
     /// <summary>
@@ -632,14 +632,14 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null);
     }
 
     /// <summary>
@@ -766,15 +766,15 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null);
     }
 
     /// <summary>
@@ -913,16 +913,16 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null);
     }
 
     /// <summary>
@@ -1073,17 +1073,17 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null);
     }
 
     /// <summary>
@@ -1246,18 +1246,18 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null);
     }
 
     /// <summary>
@@ -1432,19 +1432,19 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null);
     }
 
     /// <summary>
@@ -1631,20 +1631,20 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null);
     }
 
     /// <summary>
@@ -1843,21 +1843,21 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null,
-            Action<T15> ifFifteenth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null,
+            Action<T15>? ifFifteenth = null);
     }
 
     /// <summary>
@@ -2068,22 +2068,22 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null,
-            Action<T15> ifFifteenth = null,
-            Action<T16> ifSixteenth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null,
+            Action<T15>? ifFifteenth = null,
+            Action<T16>? ifSixteenth = null);
     }
 
     /// <summary>
@@ -2306,23 +2306,23 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null,
-            Action<T15> ifFifteenth = null,
-            Action<T16> ifSixteenth = null,
-            Action<T17> ifSeventeenth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null,
+            Action<T15>? ifFifteenth = null,
+            Action<T16>? ifSixteenth = null,
+            Action<T17>? ifSeventeenth = null);
     }
 
     /// <summary>
@@ -2557,24 +2557,24 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null,
-            Action<T15> ifFifteenth = null,
-            Action<T16> ifSixteenth = null,
-            Action<T17> ifSeventeenth = null,
-            Action<T18> ifEighteenth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null,
+            Action<T15>? ifFifteenth = null,
+            Action<T16>? ifSixteenth = null,
+            Action<T17>? ifSeventeenth = null,
+            Action<T18>? ifEighteenth = null);
     }
 
     /// <summary>
@@ -2821,25 +2821,25 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null,
-            Action<T15> ifFifteenth = null,
-            Action<T16> ifSixteenth = null,
-            Action<T17> ifSeventeenth = null,
-            Action<T18> ifEighteenth = null,
-            Action<T19> ifNineteenth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null,
+            Action<T15>? ifFifteenth = null,
+            Action<T16>? ifSixteenth = null,
+            Action<T17>? ifSeventeenth = null,
+            Action<T18>? ifEighteenth = null,
+            Action<T19>? ifNineteenth = null);
     }
 
     /// <summary>
@@ -3098,26 +3098,26 @@ namespace FuncSharp
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1> ifFirst = null,
-            Action<T2> ifSecond = null,
-            Action<T3> ifThird = null,
-            Action<T4> ifFourth = null,
-            Action<T5> ifFifth = null,
-            Action<T6> ifSixth = null,
-            Action<T7> ifSeventh = null,
-            Action<T8> ifEighth = null,
-            Action<T9> ifNinth = null,
-            Action<T10> ifTenth = null,
-            Action<T11> ifEleventh = null,
-            Action<T12> ifTwelfth = null,
-            Action<T13> ifThirteenth = null,
-            Action<T14> ifFourteenth = null,
-            Action<T15> ifFifteenth = null,
-            Action<T16> ifSixteenth = null,
-            Action<T17> ifSeventeenth = null,
-            Action<T18> ifEighteenth = null,
-            Action<T19> ifNineteenth = null,
-            Action<T20> ifTwentieth = null);
+            Action<T1>? ifFirst = null,
+            Action<T2>? ifSecond = null,
+            Action<T3>? ifThird = null,
+            Action<T4>? ifFourth = null,
+            Action<T5>? ifFifth = null,
+            Action<T6>? ifSixth = null,
+            Action<T7>? ifSeventh = null,
+            Action<T8>? ifEighth = null,
+            Action<T9>? ifNinth = null,
+            Action<T10>? ifTenth = null,
+            Action<T11>? ifEleventh = null,
+            Action<T12>? ifTwelfth = null,
+            Action<T13>? ifThirteenth = null,
+            Action<T14>? ifFourteenth = null,
+            Action<T15>? ifFifteenth = null,
+            Action<T16>? ifSixteenth = null,
+            Action<T17>? ifSeventeenth = null,
+            Action<T18>? ifEighteenth = null,
+            Action<T19>? ifNineteenth = null,
+            Action<T20>? ifTwentieth = null);
     }
 
 }

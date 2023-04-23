@@ -108,7 +108,7 @@ namespace FuncSharp
             return ifSecond(Unit.Value);
         }
 
-        public void Match(Action<A> ifFirst = null, Action<Unit> ifSecond = null)
+        public void Match(Action<A>? ifFirst = null, Action<Unit>? ifSecond = null)
         {
             if (NonEmpty)
             {
@@ -126,7 +126,7 @@ namespace FuncSharp
             }
         }
 
-        public A Get(Func<Unit, Exception> otherwise = null)
+        public A Get(Func<Unit, Exception>? otherwise = null)
         {
             if (NonEmpty)
             {

@@ -54,7 +54,7 @@ namespace FuncSharp
         /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct1<T1> AsCoproduct<T1>(this object value, Func<object, ICoproduct1<T1>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct1<T1> AsCoproduct<T1>(this object value, Func<object, ICoproduct1<T1>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct1.CreateFirst<T1>(t1);
@@ -77,7 +77,7 @@ namespace FuncSharp
         /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct1<T1> AsCoproduct<T1>(this object value, T1 t1, Func<object, ICoproduct1<T1>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct1<T1> AsCoproduct<T1>(this object value, T1 t1, Func<object, ICoproduct1<T1>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -120,7 +120,7 @@ namespace FuncSharp
         public static TResult Match<T, TResult>(
             this T value,
             T t1, Func<T, TResult> f1,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -135,7 +135,7 @@ namespace FuncSharp
         public static void Match<T>(
             this T value,
             T t1, Action<T> f1,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -148,11 +148,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 2-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 2-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct2<T1, T2> AsCoproduct<T1, T2>(this object value, Func<object, ICoproduct2<T1, T2>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct2<T1, T2> AsCoproduct<T1, T2>(this object value, Func<object, ICoproduct2<T1, T2>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct2.CreateFirst<T1, T2>(t1);
@@ -172,11 +172,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 2-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct2<T1, T2> AsCoproduct<T1, T2>(this object value, T1 t1, T2 t2, Func<object, ICoproduct2<T1, T2>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct2<T1, T2> AsCoproduct<T1, T2>(this object value, T1 t1, T2 t2, Func<object, ICoproduct2<T1, T2>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -198,8 +198,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 3-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 3-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct3<T1, T2, object> AsSafeCoproduct<T1, T2>(this object value)
@@ -209,7 +209,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 3-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct3<T1, T2, object> AsSafeCoproduct<T1, T2>(this object value, T1 t1, T2 t2)
@@ -224,7 +224,7 @@ namespace FuncSharp
             this T value,
             T t1, Func<T, TResult> f1,
             T t2, Func<T, TResult> f2,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -240,7 +240,7 @@ namespace FuncSharp
             this T value,
             T t1, Action<T> f1,
             T t2, Action<T> f2,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -253,11 +253,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 3-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 3-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct3<T1, T2, T3> AsCoproduct<T1, T2, T3>(this object value, Func<object, ICoproduct3<T1, T2, T3>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct3<T1, T2, T3> AsCoproduct<T1, T2, T3>(this object value, Func<object, ICoproduct3<T1, T2, T3>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct3.CreateFirst<T1, T2, T3>(t1);
@@ -278,11 +278,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 3-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct3<T1, T2, T3> AsCoproduct<T1, T2, T3>(this object value, T1 t1, T2 t2, T3 t3, Func<object, ICoproduct3<T1, T2, T3>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct3<T1, T2, T3> AsCoproduct<T1, T2, T3>(this object value, T1 t1, T2 t2, T3 t3, Func<object, ICoproduct3<T1, T2, T3>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -308,8 +308,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 4-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 4-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct4<T1, T2, T3, object> AsSafeCoproduct<T1, T2, T3>(this object value)
@@ -319,7 +319,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 4-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct4<T1, T2, T3, object> AsSafeCoproduct<T1, T2, T3>(this object value, T1 t1, T2 t2, T3 t3)
@@ -335,7 +335,7 @@ namespace FuncSharp
             T t1, Func<T, TResult> f1,
             T t2, Func<T, TResult> f2,
             T t3, Func<T, TResult> f3,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -352,7 +352,7 @@ namespace FuncSharp
             T t1, Action<T> f1,
             T t2, Action<T> f2,
             T t3, Action<T> f3,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -365,11 +365,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 4-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 4-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct4<T1, T2, T3, T4> AsCoproduct<T1, T2, T3, T4>(this object value, Func<object, ICoproduct4<T1, T2, T3, T4>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct4<T1, T2, T3, T4> AsCoproduct<T1, T2, T3, T4>(this object value, Func<object, ICoproduct4<T1, T2, T3, T4>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct4.CreateFirst<T1, T2, T3, T4>(t1);
@@ -391,11 +391,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 4-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct4<T1, T2, T3, T4> AsCoproduct<T1, T2, T3, T4>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, Func<object, ICoproduct4<T1, T2, T3, T4>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct4<T1, T2, T3, T4> AsCoproduct<T1, T2, T3, T4>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, Func<object, ICoproduct4<T1, T2, T3, T4>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -425,8 +425,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 5-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 5-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct5<T1, T2, T3, T4, object> AsSafeCoproduct<T1, T2, T3, T4>(this object value)
@@ -436,7 +436,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 5-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct5<T1, T2, T3, T4, object> AsSafeCoproduct<T1, T2, T3, T4>(this object value, T1 t1, T2 t2, T3 t3, T4 t4)
@@ -453,7 +453,7 @@ namespace FuncSharp
             T t2, Func<T, TResult> f2,
             T t3, Func<T, TResult> f3,
             T t4, Func<T, TResult> f4,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -471,7 +471,7 @@ namespace FuncSharp
             T t2, Action<T> f2,
             T t3, Action<T> f3,
             T t4, Action<T> f4,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -484,11 +484,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 5-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 5-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct5<T1, T2, T3, T4, T5> AsCoproduct<T1, T2, T3, T4, T5>(this object value, Func<object, ICoproduct5<T1, T2, T3, T4, T5>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct5<T1, T2, T3, T4, T5> AsCoproduct<T1, T2, T3, T4, T5>(this object value, Func<object, ICoproduct5<T1, T2, T3, T4, T5>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct5.CreateFirst<T1, T2, T3, T4, T5>(t1);
@@ -511,11 +511,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 5-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct5<T1, T2, T3, T4, T5> AsCoproduct<T1, T2, T3, T4, T5>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, Func<object, ICoproduct5<T1, T2, T3, T4, T5>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct5<T1, T2, T3, T4, T5> AsCoproduct<T1, T2, T3, T4, T5>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, Func<object, ICoproduct5<T1, T2, T3, T4, T5>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -549,8 +549,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 6-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 6-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct6<T1, T2, T3, T4, T5, object> AsSafeCoproduct<T1, T2, T3, T4, T5>(this object value)
@@ -560,7 +560,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 6-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct6<T1, T2, T3, T4, T5, object> AsSafeCoproduct<T1, T2, T3, T4, T5>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5)
@@ -578,7 +578,7 @@ namespace FuncSharp
             T t3, Func<T, TResult> f3,
             T t4, Func<T, TResult> f4,
             T t5, Func<T, TResult> f5,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -597,7 +597,7 @@ namespace FuncSharp
             T t3, Action<T> f3,
             T t4, Action<T> f4,
             T t5, Action<T> f5,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -610,11 +610,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 6-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 6-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct6<T1, T2, T3, T4, T5, T6> AsCoproduct<T1, T2, T3, T4, T5, T6>(this object value, Func<object, ICoproduct6<T1, T2, T3, T4, T5, T6>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct6<T1, T2, T3, T4, T5, T6> AsCoproduct<T1, T2, T3, T4, T5, T6>(this object value, Func<object, ICoproduct6<T1, T2, T3, T4, T5, T6>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct6.CreateFirst<T1, T2, T3, T4, T5, T6>(t1);
@@ -638,11 +638,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 6-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct6<T1, T2, T3, T4, T5, T6> AsCoproduct<T1, T2, T3, T4, T5, T6>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, Func<object, ICoproduct6<T1, T2, T3, T4, T5, T6>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct6<T1, T2, T3, T4, T5, T6> AsCoproduct<T1, T2, T3, T4, T5, T6>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, Func<object, ICoproduct6<T1, T2, T3, T4, T5, T6>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -680,8 +680,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 7-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 7-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct7<T1, T2, T3, T4, T5, T6, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6>(this object value)
@@ -691,7 +691,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 7-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct7<T1, T2, T3, T4, T5, T6, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6)
@@ -710,7 +710,7 @@ namespace FuncSharp
             T t4, Func<T, TResult> f4,
             T t5, Func<T, TResult> f5,
             T t6, Func<T, TResult> f6,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -730,7 +730,7 @@ namespace FuncSharp
             T t4, Action<T> f4,
             T t5, Action<T> f5,
             T t6, Action<T> f6,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -743,11 +743,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 7-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 7-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct7<T1, T2, T3, T4, T5, T6, T7> AsCoproduct<T1, T2, T3, T4, T5, T6, T7>(this object value, Func<object, ICoproduct7<T1, T2, T3, T4, T5, T6, T7>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct7<T1, T2, T3, T4, T5, T6, T7> AsCoproduct<T1, T2, T3, T4, T5, T6, T7>(this object value, Func<object, ICoproduct7<T1, T2, T3, T4, T5, T6, T7>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct7.CreateFirst<T1, T2, T3, T4, T5, T6, T7>(t1);
@@ -772,11 +772,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 7-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct7<T1, T2, T3, T4, T5, T6, T7> AsCoproduct<T1, T2, T3, T4, T5, T6, T7>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, Func<object, ICoproduct7<T1, T2, T3, T4, T5, T6, T7>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct7<T1, T2, T3, T4, T5, T6, T7> AsCoproduct<T1, T2, T3, T4, T5, T6, T7>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, Func<object, ICoproduct7<T1, T2, T3, T4, T5, T6, T7>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -818,8 +818,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 8-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 8-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct8<T1, T2, T3, T4, T5, T6, T7, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7>(this object value)
@@ -829,7 +829,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 8-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct8<T1, T2, T3, T4, T5, T6, T7, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7)
@@ -849,7 +849,7 @@ namespace FuncSharp
             T t5, Func<T, TResult> f5,
             T t6, Func<T, TResult> f6,
             T t7, Func<T, TResult> f7,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -870,7 +870,7 @@ namespace FuncSharp
             T t5, Action<T> f5,
             T t6, Action<T> f6,
             T t7, Action<T> f7,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -883,11 +883,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 8-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 8-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct8<T1, T2, T3, T4, T5, T6, T7, T8> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8>(this object value, Func<object, ICoproduct8<T1, T2, T3, T4, T5, T6, T7, T8>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct8<T1, T2, T3, T4, T5, T6, T7, T8> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8>(this object value, Func<object, ICoproduct8<T1, T2, T3, T4, T5, T6, T7, T8>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct8.CreateFirst<T1, T2, T3, T4, T5, T6, T7, T8>(t1);
@@ -913,11 +913,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 8-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct8<T1, T2, T3, T4, T5, T6, T7, T8> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, Func<object, ICoproduct8<T1, T2, T3, T4, T5, T6, T7, T8>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct8<T1, T2, T3, T4, T5, T6, T7, T8> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, Func<object, ICoproduct8<T1, T2, T3, T4, T5, T6, T7, T8>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -963,8 +963,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 9-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 9-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct9<T1, T2, T3, T4, T5, T6, T7, T8, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8>(this object value)
@@ -974,7 +974,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 9-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct9<T1, T2, T3, T4, T5, T6, T7, T8, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8)
@@ -995,7 +995,7 @@ namespace FuncSharp
             T t6, Func<T, TResult> f6,
             T t7, Func<T, TResult> f7,
             T t8, Func<T, TResult> f8,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -1017,7 +1017,7 @@ namespace FuncSharp
             T t6, Action<T> f6,
             T t7, Action<T> f7,
             T t8, Action<T> f8,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -1030,11 +1030,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 9-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 9-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9>(this object value, Func<object, ICoproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9>(this object value, Func<object, ICoproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct9.CreateFirst<T1, T2, T3, T4, T5, T6, T7, T8, T9>(t1);
@@ -1061,11 +1061,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 9-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, Func<object, ICoproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, Func<object, ICoproduct9<T1, T2, T3, T4, T5, T6, T7, T8, T9>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -1115,8 +1115,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 10-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 10-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9>(this object value)
@@ -1126,7 +1126,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 10-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9)
@@ -1148,7 +1148,7 @@ namespace FuncSharp
             T t7, Func<T, TResult> f7,
             T t8, Func<T, TResult> f8,
             T t9, Func<T, TResult> f9,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -1171,7 +1171,7 @@ namespace FuncSharp
             T t7, Action<T> f7,
             T t8, Action<T> f8,
             T t9, Action<T> f9,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -1184,11 +1184,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 10-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 10-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(this object value, Func<object, ICoproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(this object value, Func<object, ICoproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct10.CreateFirst<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(t1);
@@ -1216,11 +1216,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 10-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, Func<object, ICoproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, Func<object, ICoproduct10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -1274,8 +1274,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 11-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 11-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(this object value)
@@ -1285,7 +1285,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 11-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10)
@@ -1308,7 +1308,7 @@ namespace FuncSharp
             T t8, Func<T, TResult> f8,
             T t9, Func<T, TResult> f9,
             T t10, Func<T, TResult> f10,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -1332,7 +1332,7 @@ namespace FuncSharp
             T t8, Action<T> f8,
             T t9, Action<T> f9,
             T t10, Action<T> f10,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -1345,11 +1345,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 11-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 11-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(this object value, Func<object, ICoproduct11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(this object value, Func<object, ICoproduct11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct11.CreateFirst<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(t1);
@@ -1378,11 +1378,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 11-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, Func<object, ICoproduct11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, Func<object, ICoproduct11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -1440,8 +1440,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 12-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 12-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(this object value)
@@ -1451,7 +1451,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 12-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11)
@@ -1475,7 +1475,7 @@ namespace FuncSharp
             T t9, Func<T, TResult> f9,
             T t10, Func<T, TResult> f10,
             T t11, Func<T, TResult> f11,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -1500,7 +1500,7 @@ namespace FuncSharp
             T t9, Action<T> f9,
             T t10, Action<T> f10,
             T t11, Action<T> f11,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -1513,11 +1513,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 12-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 12-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(this object value, Func<object, ICoproduct12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(this object value, Func<object, ICoproduct12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct12.CreateFirst<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(t1);
@@ -1547,11 +1547,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 12-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, Func<object, ICoproduct12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, Func<object, ICoproduct12<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -1613,8 +1613,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 13-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 13-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(this object value)
@@ -1624,7 +1624,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 13-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12)
@@ -1649,7 +1649,7 @@ namespace FuncSharp
             T t10, Func<T, TResult> f10,
             T t11, Func<T, TResult> f11,
             T t12, Func<T, TResult> f12,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -1675,7 +1675,7 @@ namespace FuncSharp
             T t10, Action<T> f10,
             T t11, Action<T> f11,
             T t12, Action<T> f12,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -1688,11 +1688,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 13-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 13-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(this object value, Func<object, ICoproduct13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(this object value, Func<object, ICoproduct13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct13.CreateFirst<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(t1);
@@ -1723,11 +1723,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 13-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, Func<object, ICoproduct13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, Func<object, ICoproduct13<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -1793,8 +1793,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 14-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 14-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct14<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(this object value)
@@ -1804,7 +1804,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 14-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct14<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13)
@@ -1830,7 +1830,7 @@ namespace FuncSharp
             T t11, Func<T, TResult> f11,
             T t12, Func<T, TResult> f12,
             T t13, Func<T, TResult> f13,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -1857,7 +1857,7 @@ namespace FuncSharp
             T t11, Action<T> f11,
             T t12, Action<T> f12,
             T t13, Action<T> f13,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -1870,11 +1870,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 14-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 14-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct14<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(this object value, Func<object, ICoproduct14<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct14<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(this object value, Func<object, ICoproduct14<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct14.CreateFirst<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(t1);
@@ -1906,11 +1906,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 14-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct14<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, Func<object, ICoproduct14<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct14<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, Func<object, ICoproduct14<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -1980,8 +1980,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 15-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 15-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct15<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(this object value)
@@ -1991,7 +1991,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 15-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct15<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14)
@@ -2018,7 +2018,7 @@ namespace FuncSharp
             T t12, Func<T, TResult> f12,
             T t13, Func<T, TResult> f13,
             T t14, Func<T, TResult> f14,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -2046,7 +2046,7 @@ namespace FuncSharp
             T t12, Action<T> f12,
             T t13, Action<T> f13,
             T t14, Action<T> f14,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -2059,11 +2059,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 15-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 15-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct15<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(this object value, Func<object, ICoproduct15<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct15<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(this object value, Func<object, ICoproduct15<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct15.CreateFirst<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(t1);
@@ -2096,11 +2096,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 15-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct15<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, Func<object, ICoproduct15<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct15<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, Func<object, ICoproduct15<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -2174,8 +2174,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 16-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 16-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct16<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(this object value)
@@ -2185,7 +2185,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 16-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct16<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15)
@@ -2213,7 +2213,7 @@ namespace FuncSharp
             T t13, Func<T, TResult> f13,
             T t14, Func<T, TResult> f14,
             T t15, Func<T, TResult> f15,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -2242,7 +2242,7 @@ namespace FuncSharp
             T t13, Action<T> f13,
             T t14, Action<T> f14,
             T t15, Action<T> f15,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -2255,11 +2255,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 16-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 16-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct16<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(this object value, Func<object, ICoproduct16<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct16<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(this object value, Func<object, ICoproduct16<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct16.CreateFirst<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(t1);
@@ -2293,11 +2293,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 16-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct16<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16, Func<object, ICoproduct16<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct16<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16, Func<object, ICoproduct16<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -2375,8 +2375,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 17-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 17-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct17<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(this object value)
@@ -2386,7 +2386,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 17-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct17<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16)
@@ -2415,7 +2415,7 @@ namespace FuncSharp
             T t14, Func<T, TResult> f14,
             T t15, Func<T, TResult> f15,
             T t16, Func<T, TResult> f16,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -2445,7 +2445,7 @@ namespace FuncSharp
             T t14, Action<T> f14,
             T t15, Action<T> f15,
             T t16, Action<T> f16,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -2458,11 +2458,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 17-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 17-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct17<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>(this object value, Func<object, ICoproduct17<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct17<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>(this object value, Func<object, ICoproduct17<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct17.CreateFirst<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>(t1);
@@ -2497,11 +2497,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 17-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct17<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16, T17 t17, Func<object, ICoproduct17<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct17<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16, T17 t17, Func<object, ICoproduct17<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -2583,8 +2583,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 18-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 18-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct18<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>(this object value)
@@ -2594,7 +2594,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 18-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct18<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16, T17 t17)
@@ -2624,7 +2624,7 @@ namespace FuncSharp
             T t15, Func<T, TResult> f15,
             T t16, Func<T, TResult> f16,
             T t17, Func<T, TResult> f17,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -2655,7 +2655,7 @@ namespace FuncSharp
             T t15, Action<T> f15,
             T t16, Action<T> f16,
             T t17, Action<T> f17,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -2668,11 +2668,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 18-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 18-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct18<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>(this object value, Func<object, ICoproduct18<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct18<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>(this object value, Func<object, ICoproduct18<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct18.CreateFirst<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>(t1);
@@ -2708,11 +2708,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 18-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct18<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16, T17 t17, T18 t18, Func<object, ICoproduct18<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct18<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16, T17 t17, T18 t18, Func<object, ICoproduct18<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -2798,8 +2798,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 19-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 19-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct19<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>(this object value)
@@ -2809,7 +2809,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 19-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct19<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16, T17 t17, T18 t18)
@@ -2840,7 +2840,7 @@ namespace FuncSharp
             T t16, Func<T, TResult> f16,
             T t17, Func<T, TResult> f17,
             T t18, Func<T, TResult> f18,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -2872,7 +2872,7 @@ namespace FuncSharp
             T t16, Action<T> f16,
             T t17, Action<T> f17,
             T t18, Action<T> f18,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -2885,11 +2885,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 19-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 19-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct19<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>(this object value, Func<object, ICoproduct19<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct19<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>(this object value, Func<object, ICoproduct19<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct19.CreateFirst<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>(t1);
@@ -2926,11 +2926,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 19-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct19<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16, T17 t17, T18 t18, T19 t19, Func<object, ICoproduct19<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct19<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16, T17 t17, T18 t18, T19 t19, Func<object, ICoproduct19<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
@@ -3020,8 +3020,8 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 20-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in 
+        /// Creates a new 20-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, then the value will be placed in
         /// the last place.
         /// </summary>
         public static ICoproduct20<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>(this object value)
@@ -3031,7 +3031,7 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 20-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters equals the value, then
         /// the value will be placed in the last place.
         /// </summary>
         public static ICoproduct20<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, object> AsSafeCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16, T17 t17, T18 t18, T19 t19)
@@ -3063,7 +3063,7 @@ namespace FuncSharp
             T t17, Func<T, TResult> f17,
             T t18, Func<T, TResult> f18,
             T t19, Func<T, TResult> f19,
-            Func<T, TResult> otherwise = null)
+            Func<T, TResult>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -3096,7 +3096,7 @@ namespace FuncSharp
             T t17, Action<T> f17,
             T t18, Action<T> f18,
             T t19, Action<T> f19,
-            Action<T> otherwise = null)
+            Action<T>? otherwise = null)
         {
             if (otherwise == null)
             {
@@ -3109,11 +3109,11 @@ namespace FuncSharp
         }
 
         /// <summary>
-        /// Creates a new 20-dimensional coproduct as a result of type match. The specified value will be on the first place 
-        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback 
+        /// Creates a new 20-dimensional coproduct as a result of type match. The specified value will be on the first place
+        /// whose type matches type of the value. If none of the types matches type of the value, returns result of the fallback
         /// function. In case when the fallback is null, throws an exception (optionally created by the otherwise function).
         /// </summary>
-        public static ICoproduct20<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20>(this object value, Func<object, ICoproduct20<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct20<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20>(this object value, Func<object, ICoproduct20<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             switch (value) {
                 case T1 t1: return Coproduct20.CreateFirst<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20>(t1);
@@ -3151,11 +3151,11 @@ namespace FuncSharp
 
         /// <summary>
         /// Creates a new 20-dimensional coproduct as a result of value match against the parameters. The specified value will
-        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value, 
-        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by 
+        /// be on the first place whose corresponding parameter equals the value. If none of the parameters matches the value,
+        /// returns result of the fallback function. In case when the fallback is null, throws an exception (optionally created by
         /// the otherwise function).
         /// </summary>
-        public static ICoproduct20<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16, T17 t17, T18 t18, T19 t19, T20 t20, Func<object, ICoproduct20<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20>> fallback = null, Func<Unit, Exception> otherwise = null)
+        public static ICoproduct20<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20> AsCoproduct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20>(this object value, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11, T12 t12, T13 t13, T14 t14, T15 t15, T16 t16, T17 t17, T18 t18, T19 t19, T20 t20, Func<object, ICoproduct20<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20>>? fallback = null, Func<Unit, Exception>? otherwise = null)
         {
             if (Equals(value, t1))
             {
