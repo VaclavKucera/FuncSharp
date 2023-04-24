@@ -49,7 +49,7 @@ namespace FuncSharp
         /// <summary>
         /// Returns an option with the specified value.
         /// </summary>
-        public static IOption<A> Valued<A>(A value)
+        public static IOption<A> Valued<A>(A? value)
         {
             return new Option<A>(value);
         }
@@ -65,7 +65,7 @@ namespace FuncSharp
 
     internal sealed class Option<A> : IOption<A>
     {
-        public Option(A value)
+        public Option(A? value)
         {
             Value = value;
             NonEmpty = true;
@@ -79,7 +79,7 @@ namespace FuncSharp
 
         public static IOption<A> Empty { get; } = new Option<A>();
 
-        private A Value { get; }
+        private A? Value { get; }
 
         public bool NonEmpty { get; }
 

@@ -20,7 +20,7 @@ namespace FuncSharp
         /// <summary>
         /// Value of the coproduct type no matter which one of the possible values it is.
         /// </summary>
-        object CoproductValue { get; }
+        object? CoproductValue { get; }
     }
 
     /// <summary>
@@ -51,14 +51,14 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst);
+            Func<T1?, R> ifFirst);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null);
+            Action<T1?>? ifFirst = null);
     }
 
     /// <summary>
@@ -93,16 +93,16 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null);
     }
 
     /// <summary>
@@ -148,18 +148,18 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null);
     }
 
     /// <summary>
@@ -216,20 +216,20 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null);
     }
 
     /// <summary>
@@ -297,22 +297,22 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null);
     }
 
     /// <summary>
@@ -391,24 +391,24 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null);
     }
 
     /// <summary>
@@ -498,26 +498,26 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null);
     }
 
     /// <summary>
@@ -618,28 +618,28 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null);
     }
 
     /// <summary>
@@ -751,30 +751,30 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null);
     }
 
     /// <summary>
@@ -897,32 +897,32 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null);
     }
 
     /// <summary>
@@ -1056,34 +1056,34 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null);
     }
 
     /// <summary>
@@ -1228,36 +1228,36 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null);
     }
 
     /// <summary>
@@ -1413,38 +1413,38 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null);
     }
 
     /// <summary>
@@ -1611,40 +1611,40 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null);
     }
 
     /// <summary>
@@ -1822,42 +1822,42 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth,
-            Func<T15, R> ifFifteenth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth,
+            Func<T15?, R> ifFifteenth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null,
-            Action<T15>? ifFifteenth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null,
+            Action<T15?>? ifFifteenth = null);
     }
 
     /// <summary>
@@ -2046,44 +2046,44 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth,
-            Func<T15, R> ifFifteenth,
-            Func<T16, R> ifSixteenth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth,
+            Func<T15?, R> ifFifteenth,
+            Func<T16?, R> ifSixteenth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null,
-            Action<T15>? ifFifteenth = null,
-            Action<T16>? ifSixteenth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null,
+            Action<T15?>? ifFifteenth = null,
+            Action<T16?>? ifSixteenth = null);
     }
 
     /// <summary>
@@ -2283,46 +2283,46 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth,
-            Func<T15, R> ifFifteenth,
-            Func<T16, R> ifSixteenth,
-            Func<T17, R> ifSeventeenth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth,
+            Func<T15?, R> ifFifteenth,
+            Func<T16?, R> ifSixteenth,
+            Func<T17?, R> ifSeventeenth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null,
-            Action<T15>? ifFifteenth = null,
-            Action<T16>? ifSixteenth = null,
-            Action<T17>? ifSeventeenth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null,
+            Action<T15?>? ifFifteenth = null,
+            Action<T16?>? ifSixteenth = null,
+            Action<T17?>? ifSeventeenth = null);
     }
 
     /// <summary>
@@ -2533,48 +2533,48 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth,
-            Func<T15, R> ifFifteenth,
-            Func<T16, R> ifSixteenth,
-            Func<T17, R> ifSeventeenth,
-            Func<T18, R> ifEighteenth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth,
+            Func<T15?, R> ifFifteenth,
+            Func<T16?, R> ifSixteenth,
+            Func<T17?, R> ifSeventeenth,
+            Func<T18?, R> ifEighteenth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null,
-            Action<T15>? ifFifteenth = null,
-            Action<T16>? ifSixteenth = null,
-            Action<T17>? ifSeventeenth = null,
-            Action<T18>? ifEighteenth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null,
+            Action<T15?>? ifFifteenth = null,
+            Action<T16?>? ifSixteenth = null,
+            Action<T17?>? ifSeventeenth = null,
+            Action<T18?>? ifEighteenth = null);
     }
 
     /// <summary>
@@ -2796,50 +2796,50 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth,
-            Func<T15, R> ifFifteenth,
-            Func<T16, R> ifSixteenth,
-            Func<T17, R> ifSeventeenth,
-            Func<T18, R> ifEighteenth,
-            Func<T19, R> ifNineteenth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth,
+            Func<T15?, R> ifFifteenth,
+            Func<T16?, R> ifSixteenth,
+            Func<T17?, R> ifSeventeenth,
+            Func<T18?, R> ifEighteenth,
+            Func<T19?, R> ifNineteenth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null,
-            Action<T15>? ifFifteenth = null,
-            Action<T16>? ifSixteenth = null,
-            Action<T17>? ifSeventeenth = null,
-            Action<T18>? ifEighteenth = null,
-            Action<T19>? ifNineteenth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null,
+            Action<T15?>? ifFifteenth = null,
+            Action<T16?>? ifSixteenth = null,
+            Action<T17?>? ifSeventeenth = null,
+            Action<T18?>? ifEighteenth = null,
+            Action<T19?>? ifNineteenth = null);
     }
 
     /// <summary>
@@ -3072,52 +3072,52 @@ namespace FuncSharp
         /// of the <paramref name="ifFirst" /> function.
         /// </summary>
         R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth,
-            Func<T15, R> ifFifteenth,
-            Func<T16, R> ifSixteenth,
-            Func<T17, R> ifSeventeenth,
-            Func<T18, R> ifEighteenth,
-            Func<T19, R> ifNineteenth,
-            Func<T20, R> ifTwentieth);
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth,
+            Func<T15?, R> ifFifteenth,
+            Func<T16?, R> ifSixteenth,
+            Func<T17?, R> ifSeventeenth,
+            Func<T18?, R> ifEighteenth,
+            Func<T19?, R> ifNineteenth,
+            Func<T20?, R> ifTwentieth);
 
         /// <summary>
         /// Executes the function that matches the coproduct value. E.g. if the coproduct is the first value, executes 
         /// the <paramref name="ifFirst" /> function. If the function that should be executed is null, does nothing.
         /// </summary>
         void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null,
-            Action<T15>? ifFifteenth = null,
-            Action<T16>? ifSixteenth = null,
-            Action<T17>? ifSeventeenth = null,
-            Action<T18>? ifEighteenth = null,
-            Action<T19>? ifNineteenth = null,
-            Action<T20>? ifTwentieth = null);
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null,
+            Action<T15?>? ifFifteenth = null,
+            Action<T16?>? ifSixteenth = null,
+            Action<T17?>? ifSeventeenth = null,
+            Action<T18?>? ifEighteenth = null,
+            Action<T19?>? ifNineteenth = null,
+            Action<T20?>? ifTwentieth = null);
     }
 
 }

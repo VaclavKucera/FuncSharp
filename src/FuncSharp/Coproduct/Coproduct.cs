@@ -7,7 +7,7 @@ namespace FuncSharp
     /// </summary>
     public abstract class CoproductBase : ICoproduct
     {
-        public CoproductBase(int arity, int discriminator, object value)
+        public CoproductBase(int arity, int discriminator, object? value)
         {
             CoproductArity = arity;
             CoproductDiscriminator = discriminator;
@@ -18,7 +18,7 @@ namespace FuncSharp
 
         public int CoproductDiscriminator { get; }
 
-        public object CoproductValue { get; }
+        public object? CoproductValue { get; }
 
         public override int GetHashCode()
         {
@@ -41,7 +41,7 @@ namespace FuncSharp
             {
                 return (T)CoproductValue;
             }
-            return default(T);
+            return default!;
         }
     }
 
@@ -97,7 +97,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct1(int discriminator, object value)
+        protected Coproduct1(int discriminator, object? value)
             : base(1, discriminator, value)
         {
         }
@@ -109,25 +109,25 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst)
+            Func<T1?, R> ifFirst)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null)
+            Action<T1?>? ifFirst = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
             }
         }
     }
@@ -189,7 +189,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct2(int discriminator, object value)
+        protected Coproduct2(int discriminator, object? value)
             : base(2, discriminator, value)
         {
         }
@@ -205,33 +205,33 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
             }
         }
     }
@@ -309,7 +309,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct3(int discriminator, object value)
+        protected Coproduct3(int discriminator, object? value)
             : base(3, discriminator, value)
         {
         }
@@ -329,41 +329,41 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
             }
         }
     }
@@ -457,7 +457,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct4(int discriminator, object value)
+        protected Coproduct4(int discriminator, object? value)
             : base(4, discriminator, value)
         {
         }
@@ -481,49 +481,49 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
             }
         }
     }
@@ -633,7 +633,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct5(int discriminator, object value)
+        protected Coproduct5(int discriminator, object? value)
             : base(5, discriminator, value)
         {
         }
@@ -661,57 +661,57 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
             }
         }
     }
@@ -837,7 +837,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct6(int discriminator, object value)
+        protected Coproduct6(int discriminator, object? value)
             : base(6, discriminator, value)
         {
         }
@@ -869,65 +869,65 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
             }
         }
     }
@@ -1069,7 +1069,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct7(int discriminator, object value)
+        protected Coproduct7(int discriminator, object? value)
             : base(7, discriminator, value)
         {
         }
@@ -1105,73 +1105,73 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
             }
         }
     }
@@ -1329,7 +1329,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct8(int discriminator, object value)
+        protected Coproduct8(int discriminator, object? value)
             : base(8, discriminator, value)
         {
         }
@@ -1369,81 +1369,81 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
         public IOption<T8> Eighth
         {
-            get { return IsEighth ? Option.Valued((T8)CoproductValue) : Option.Empty<T8>(); }
+            get { return IsEighth ? Option.Valued((T8?)CoproductValue) : Option.Empty<T8>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                case 8: return ifEighth((T8)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                case 8: return ifEighth((T8?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
-                case 8: ifEighth?.Invoke((T8)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
+                case 8: ifEighth?.Invoke((T8?)CoproductValue); break;
             }
         }
     }
@@ -1617,7 +1617,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct9(int discriminator, object value)
+        protected Coproduct9(int discriminator, object? value)
             : base(9, discriminator, value)
         {
         }
@@ -1661,89 +1661,89 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
         public IOption<T8> Eighth
         {
-            get { return IsEighth ? Option.Valued((T8)CoproductValue) : Option.Empty<T8>(); }
+            get { return IsEighth ? Option.Valued((T8?)CoproductValue) : Option.Empty<T8>(); }
         }
         public IOption<T9> Ninth
         {
-            get { return IsNinth ? Option.Valued((T9)CoproductValue) : Option.Empty<T9>(); }
+            get { return IsNinth ? Option.Valued((T9?)CoproductValue) : Option.Empty<T9>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                case 8: return ifEighth((T8)CoproductValue);
-                case 9: return ifNinth((T9)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                case 8: return ifEighth((T8?)CoproductValue);
+                case 9: return ifNinth((T9?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
-                case 8: ifEighth?.Invoke((T8)CoproductValue); break;
-                case 9: ifNinth?.Invoke((T9)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
+                case 8: ifEighth?.Invoke((T8?)CoproductValue); break;
+                case 9: ifNinth?.Invoke((T9?)CoproductValue); break;
             }
         }
     }
@@ -1933,7 +1933,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct10(int discriminator, object value)
+        protected Coproduct10(int discriminator, object? value)
             : base(10, discriminator, value)
         {
         }
@@ -1981,97 +1981,97 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
         public IOption<T8> Eighth
         {
-            get { return IsEighth ? Option.Valued((T8)CoproductValue) : Option.Empty<T8>(); }
+            get { return IsEighth ? Option.Valued((T8?)CoproductValue) : Option.Empty<T8>(); }
         }
         public IOption<T9> Ninth
         {
-            get { return IsNinth ? Option.Valued((T9)CoproductValue) : Option.Empty<T9>(); }
+            get { return IsNinth ? Option.Valued((T9?)CoproductValue) : Option.Empty<T9>(); }
         }
         public IOption<T10> Tenth
         {
-            get { return IsTenth ? Option.Valued((T10)CoproductValue) : Option.Empty<T10>(); }
+            get { return IsTenth ? Option.Valued((T10?)CoproductValue) : Option.Empty<T10>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                case 8: return ifEighth((T8)CoproductValue);
-                case 9: return ifNinth((T9)CoproductValue);
-                case 10: return ifTenth((T10)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                case 8: return ifEighth((T8?)CoproductValue);
+                case 9: return ifNinth((T9?)CoproductValue);
+                case 10: return ifTenth((T10?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
-                case 8: ifEighth?.Invoke((T8)CoproductValue); break;
-                case 9: ifNinth?.Invoke((T9)CoproductValue); break;
-                case 10: ifTenth?.Invoke((T10)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
+                case 8: ifEighth?.Invoke((T8?)CoproductValue); break;
+                case 9: ifNinth?.Invoke((T9?)CoproductValue); break;
+                case 10: ifTenth?.Invoke((T10?)CoproductValue); break;
             }
         }
     }
@@ -2277,7 +2277,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct11(int discriminator, object value)
+        protected Coproduct11(int discriminator, object? value)
             : base(11, discriminator, value)
         {
         }
@@ -2329,105 +2329,105 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
         public IOption<T8> Eighth
         {
-            get { return IsEighth ? Option.Valued((T8)CoproductValue) : Option.Empty<T8>(); }
+            get { return IsEighth ? Option.Valued((T8?)CoproductValue) : Option.Empty<T8>(); }
         }
         public IOption<T9> Ninth
         {
-            get { return IsNinth ? Option.Valued((T9)CoproductValue) : Option.Empty<T9>(); }
+            get { return IsNinth ? Option.Valued((T9?)CoproductValue) : Option.Empty<T9>(); }
         }
         public IOption<T10> Tenth
         {
-            get { return IsTenth ? Option.Valued((T10)CoproductValue) : Option.Empty<T10>(); }
+            get { return IsTenth ? Option.Valued((T10?)CoproductValue) : Option.Empty<T10>(); }
         }
         public IOption<T11> Eleventh
         {
-            get { return IsEleventh ? Option.Valued((T11)CoproductValue) : Option.Empty<T11>(); }
+            get { return IsEleventh ? Option.Valued((T11?)CoproductValue) : Option.Empty<T11>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                case 8: return ifEighth((T8)CoproductValue);
-                case 9: return ifNinth((T9)CoproductValue);
-                case 10: return ifTenth((T10)CoproductValue);
-                case 11: return ifEleventh((T11)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                case 8: return ifEighth((T8?)CoproductValue);
+                case 9: return ifNinth((T9?)CoproductValue);
+                case 10: return ifTenth((T10?)CoproductValue);
+                case 11: return ifEleventh((T11?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
-                case 8: ifEighth?.Invoke((T8)CoproductValue); break;
-                case 9: ifNinth?.Invoke((T9)CoproductValue); break;
-                case 10: ifTenth?.Invoke((T10)CoproductValue); break;
-                case 11: ifEleventh?.Invoke((T11)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
+                case 8: ifEighth?.Invoke((T8?)CoproductValue); break;
+                case 9: ifNinth?.Invoke((T9?)CoproductValue); break;
+                case 10: ifTenth?.Invoke((T10?)CoproductValue); break;
+                case 11: ifEleventh?.Invoke((T11?)CoproductValue); break;
             }
         }
     }
@@ -2649,7 +2649,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct12(int discriminator, object value)
+        protected Coproduct12(int discriminator, object? value)
             : base(12, discriminator, value)
         {
         }
@@ -2705,113 +2705,113 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
         public IOption<T8> Eighth
         {
-            get { return IsEighth ? Option.Valued((T8)CoproductValue) : Option.Empty<T8>(); }
+            get { return IsEighth ? Option.Valued((T8?)CoproductValue) : Option.Empty<T8>(); }
         }
         public IOption<T9> Ninth
         {
-            get { return IsNinth ? Option.Valued((T9)CoproductValue) : Option.Empty<T9>(); }
+            get { return IsNinth ? Option.Valued((T9?)CoproductValue) : Option.Empty<T9>(); }
         }
         public IOption<T10> Tenth
         {
-            get { return IsTenth ? Option.Valued((T10)CoproductValue) : Option.Empty<T10>(); }
+            get { return IsTenth ? Option.Valued((T10?)CoproductValue) : Option.Empty<T10>(); }
         }
         public IOption<T11> Eleventh
         {
-            get { return IsEleventh ? Option.Valued((T11)CoproductValue) : Option.Empty<T11>(); }
+            get { return IsEleventh ? Option.Valued((T11?)CoproductValue) : Option.Empty<T11>(); }
         }
         public IOption<T12> Twelfth
         {
-            get { return IsTwelfth ? Option.Valued((T12)CoproductValue) : Option.Empty<T12>(); }
+            get { return IsTwelfth ? Option.Valued((T12?)CoproductValue) : Option.Empty<T12>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                case 8: return ifEighth((T8)CoproductValue);
-                case 9: return ifNinth((T9)CoproductValue);
-                case 10: return ifTenth((T10)CoproductValue);
-                case 11: return ifEleventh((T11)CoproductValue);
-                case 12: return ifTwelfth((T12)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                case 8: return ifEighth((T8?)CoproductValue);
+                case 9: return ifNinth((T9?)CoproductValue);
+                case 10: return ifTenth((T10?)CoproductValue);
+                case 11: return ifEleventh((T11?)CoproductValue);
+                case 12: return ifTwelfth((T12?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
-                case 8: ifEighth?.Invoke((T8)CoproductValue); break;
-                case 9: ifNinth?.Invoke((T9)CoproductValue); break;
-                case 10: ifTenth?.Invoke((T10)CoproductValue); break;
-                case 11: ifEleventh?.Invoke((T11)CoproductValue); break;
-                case 12: ifTwelfth?.Invoke((T12)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
+                case 8: ifEighth?.Invoke((T8?)CoproductValue); break;
+                case 9: ifNinth?.Invoke((T9?)CoproductValue); break;
+                case 10: ifTenth?.Invoke((T10?)CoproductValue); break;
+                case 11: ifEleventh?.Invoke((T11?)CoproductValue); break;
+                case 12: ifTwelfth?.Invoke((T12?)CoproductValue); break;
             }
         }
     }
@@ -3049,7 +3049,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct13(int discriminator, object value)
+        protected Coproduct13(int discriminator, object? value)
             : base(13, discriminator, value)
         {
         }
@@ -3109,121 +3109,121 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
         public IOption<T8> Eighth
         {
-            get { return IsEighth ? Option.Valued((T8)CoproductValue) : Option.Empty<T8>(); }
+            get { return IsEighth ? Option.Valued((T8?)CoproductValue) : Option.Empty<T8>(); }
         }
         public IOption<T9> Ninth
         {
-            get { return IsNinth ? Option.Valued((T9)CoproductValue) : Option.Empty<T9>(); }
+            get { return IsNinth ? Option.Valued((T9?)CoproductValue) : Option.Empty<T9>(); }
         }
         public IOption<T10> Tenth
         {
-            get { return IsTenth ? Option.Valued((T10)CoproductValue) : Option.Empty<T10>(); }
+            get { return IsTenth ? Option.Valued((T10?)CoproductValue) : Option.Empty<T10>(); }
         }
         public IOption<T11> Eleventh
         {
-            get { return IsEleventh ? Option.Valued((T11)CoproductValue) : Option.Empty<T11>(); }
+            get { return IsEleventh ? Option.Valued((T11?)CoproductValue) : Option.Empty<T11>(); }
         }
         public IOption<T12> Twelfth
         {
-            get { return IsTwelfth ? Option.Valued((T12)CoproductValue) : Option.Empty<T12>(); }
+            get { return IsTwelfth ? Option.Valued((T12?)CoproductValue) : Option.Empty<T12>(); }
         }
         public IOption<T13> Thirteenth
         {
-            get { return IsThirteenth ? Option.Valued((T13)CoproductValue) : Option.Empty<T13>(); }
+            get { return IsThirteenth ? Option.Valued((T13?)CoproductValue) : Option.Empty<T13>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                case 8: return ifEighth((T8)CoproductValue);
-                case 9: return ifNinth((T9)CoproductValue);
-                case 10: return ifTenth((T10)CoproductValue);
-                case 11: return ifEleventh((T11)CoproductValue);
-                case 12: return ifTwelfth((T12)CoproductValue);
-                case 13: return ifThirteenth((T13)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                case 8: return ifEighth((T8?)CoproductValue);
+                case 9: return ifNinth((T9?)CoproductValue);
+                case 10: return ifTenth((T10?)CoproductValue);
+                case 11: return ifEleventh((T11?)CoproductValue);
+                case 12: return ifTwelfth((T12?)CoproductValue);
+                case 13: return ifThirteenth((T13?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
-                case 8: ifEighth?.Invoke((T8)CoproductValue); break;
-                case 9: ifNinth?.Invoke((T9)CoproductValue); break;
-                case 10: ifTenth?.Invoke((T10)CoproductValue); break;
-                case 11: ifEleventh?.Invoke((T11)CoproductValue); break;
-                case 12: ifTwelfth?.Invoke((T12)CoproductValue); break;
-                case 13: ifThirteenth?.Invoke((T13)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
+                case 8: ifEighth?.Invoke((T8?)CoproductValue); break;
+                case 9: ifNinth?.Invoke((T9?)CoproductValue); break;
+                case 10: ifTenth?.Invoke((T10?)CoproductValue); break;
+                case 11: ifEleventh?.Invoke((T11?)CoproductValue); break;
+                case 12: ifTwelfth?.Invoke((T12?)CoproductValue); break;
+                case 13: ifThirteenth?.Invoke((T13?)CoproductValue); break;
             }
         }
     }
@@ -3477,7 +3477,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct14(int discriminator, object value)
+        protected Coproduct14(int discriminator, object? value)
             : base(14, discriminator, value)
         {
         }
@@ -3541,129 +3541,129 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
         public IOption<T8> Eighth
         {
-            get { return IsEighth ? Option.Valued((T8)CoproductValue) : Option.Empty<T8>(); }
+            get { return IsEighth ? Option.Valued((T8?)CoproductValue) : Option.Empty<T8>(); }
         }
         public IOption<T9> Ninth
         {
-            get { return IsNinth ? Option.Valued((T9)CoproductValue) : Option.Empty<T9>(); }
+            get { return IsNinth ? Option.Valued((T9?)CoproductValue) : Option.Empty<T9>(); }
         }
         public IOption<T10> Tenth
         {
-            get { return IsTenth ? Option.Valued((T10)CoproductValue) : Option.Empty<T10>(); }
+            get { return IsTenth ? Option.Valued((T10?)CoproductValue) : Option.Empty<T10>(); }
         }
         public IOption<T11> Eleventh
         {
-            get { return IsEleventh ? Option.Valued((T11)CoproductValue) : Option.Empty<T11>(); }
+            get { return IsEleventh ? Option.Valued((T11?)CoproductValue) : Option.Empty<T11>(); }
         }
         public IOption<T12> Twelfth
         {
-            get { return IsTwelfth ? Option.Valued((T12)CoproductValue) : Option.Empty<T12>(); }
+            get { return IsTwelfth ? Option.Valued((T12?)CoproductValue) : Option.Empty<T12>(); }
         }
         public IOption<T13> Thirteenth
         {
-            get { return IsThirteenth ? Option.Valued((T13)CoproductValue) : Option.Empty<T13>(); }
+            get { return IsThirteenth ? Option.Valued((T13?)CoproductValue) : Option.Empty<T13>(); }
         }
         public IOption<T14> Fourteenth
         {
-            get { return IsFourteenth ? Option.Valued((T14)CoproductValue) : Option.Empty<T14>(); }
+            get { return IsFourteenth ? Option.Valued((T14?)CoproductValue) : Option.Empty<T14>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                case 8: return ifEighth((T8)CoproductValue);
-                case 9: return ifNinth((T9)CoproductValue);
-                case 10: return ifTenth((T10)CoproductValue);
-                case 11: return ifEleventh((T11)CoproductValue);
-                case 12: return ifTwelfth((T12)CoproductValue);
-                case 13: return ifThirteenth((T13)CoproductValue);
-                case 14: return ifFourteenth((T14)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                case 8: return ifEighth((T8?)CoproductValue);
+                case 9: return ifNinth((T9?)CoproductValue);
+                case 10: return ifTenth((T10?)CoproductValue);
+                case 11: return ifEleventh((T11?)CoproductValue);
+                case 12: return ifTwelfth((T12?)CoproductValue);
+                case 13: return ifThirteenth((T13?)CoproductValue);
+                case 14: return ifFourteenth((T14?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
-                case 8: ifEighth?.Invoke((T8)CoproductValue); break;
-                case 9: ifNinth?.Invoke((T9)CoproductValue); break;
-                case 10: ifTenth?.Invoke((T10)CoproductValue); break;
-                case 11: ifEleventh?.Invoke((T11)CoproductValue); break;
-                case 12: ifTwelfth?.Invoke((T12)CoproductValue); break;
-                case 13: ifThirteenth?.Invoke((T13)CoproductValue); break;
-                case 14: ifFourteenth?.Invoke((T14)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
+                case 8: ifEighth?.Invoke((T8?)CoproductValue); break;
+                case 9: ifNinth?.Invoke((T9?)CoproductValue); break;
+                case 10: ifTenth?.Invoke((T10?)CoproductValue); break;
+                case 11: ifEleventh?.Invoke((T11?)CoproductValue); break;
+                case 12: ifTwelfth?.Invoke((T12?)CoproductValue); break;
+                case 13: ifThirteenth?.Invoke((T13?)CoproductValue); break;
+                case 14: ifFourteenth?.Invoke((T14?)CoproductValue); break;
             }
         }
     }
@@ -3933,7 +3933,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct15(int discriminator, object value)
+        protected Coproduct15(int discriminator, object? value)
             : base(15, discriminator, value)
         {
         }
@@ -4001,137 +4001,137 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
         public IOption<T8> Eighth
         {
-            get { return IsEighth ? Option.Valued((T8)CoproductValue) : Option.Empty<T8>(); }
+            get { return IsEighth ? Option.Valued((T8?)CoproductValue) : Option.Empty<T8>(); }
         }
         public IOption<T9> Ninth
         {
-            get { return IsNinth ? Option.Valued((T9)CoproductValue) : Option.Empty<T9>(); }
+            get { return IsNinth ? Option.Valued((T9?)CoproductValue) : Option.Empty<T9>(); }
         }
         public IOption<T10> Tenth
         {
-            get { return IsTenth ? Option.Valued((T10)CoproductValue) : Option.Empty<T10>(); }
+            get { return IsTenth ? Option.Valued((T10?)CoproductValue) : Option.Empty<T10>(); }
         }
         public IOption<T11> Eleventh
         {
-            get { return IsEleventh ? Option.Valued((T11)CoproductValue) : Option.Empty<T11>(); }
+            get { return IsEleventh ? Option.Valued((T11?)CoproductValue) : Option.Empty<T11>(); }
         }
         public IOption<T12> Twelfth
         {
-            get { return IsTwelfth ? Option.Valued((T12)CoproductValue) : Option.Empty<T12>(); }
+            get { return IsTwelfth ? Option.Valued((T12?)CoproductValue) : Option.Empty<T12>(); }
         }
         public IOption<T13> Thirteenth
         {
-            get { return IsThirteenth ? Option.Valued((T13)CoproductValue) : Option.Empty<T13>(); }
+            get { return IsThirteenth ? Option.Valued((T13?)CoproductValue) : Option.Empty<T13>(); }
         }
         public IOption<T14> Fourteenth
         {
-            get { return IsFourteenth ? Option.Valued((T14)CoproductValue) : Option.Empty<T14>(); }
+            get { return IsFourteenth ? Option.Valued((T14?)CoproductValue) : Option.Empty<T14>(); }
         }
         public IOption<T15> Fifteenth
         {
-            get { return IsFifteenth ? Option.Valued((T15)CoproductValue) : Option.Empty<T15>(); }
+            get { return IsFifteenth ? Option.Valued((T15?)CoproductValue) : Option.Empty<T15>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth,
-            Func<T15, R> ifFifteenth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth,
+            Func<T15?, R> ifFifteenth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                case 8: return ifEighth((T8)CoproductValue);
-                case 9: return ifNinth((T9)CoproductValue);
-                case 10: return ifTenth((T10)CoproductValue);
-                case 11: return ifEleventh((T11)CoproductValue);
-                case 12: return ifTwelfth((T12)CoproductValue);
-                case 13: return ifThirteenth((T13)CoproductValue);
-                case 14: return ifFourteenth((T14)CoproductValue);
-                case 15: return ifFifteenth((T15)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                case 8: return ifEighth((T8?)CoproductValue);
+                case 9: return ifNinth((T9?)CoproductValue);
+                case 10: return ifTenth((T10?)CoproductValue);
+                case 11: return ifEleventh((T11?)CoproductValue);
+                case 12: return ifTwelfth((T12?)CoproductValue);
+                case 13: return ifThirteenth((T13?)CoproductValue);
+                case 14: return ifFourteenth((T14?)CoproductValue);
+                case 15: return ifFifteenth((T15?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null,
-            Action<T15>? ifFifteenth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null,
+            Action<T15?>? ifFifteenth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
-                case 8: ifEighth?.Invoke((T8)CoproductValue); break;
-                case 9: ifNinth?.Invoke((T9)CoproductValue); break;
-                case 10: ifTenth?.Invoke((T10)CoproductValue); break;
-                case 11: ifEleventh?.Invoke((T11)CoproductValue); break;
-                case 12: ifTwelfth?.Invoke((T12)CoproductValue); break;
-                case 13: ifThirteenth?.Invoke((T13)CoproductValue); break;
-                case 14: ifFourteenth?.Invoke((T14)CoproductValue); break;
-                case 15: ifFifteenth?.Invoke((T15)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
+                case 8: ifEighth?.Invoke((T8?)CoproductValue); break;
+                case 9: ifNinth?.Invoke((T9?)CoproductValue); break;
+                case 10: ifTenth?.Invoke((T10?)CoproductValue); break;
+                case 11: ifEleventh?.Invoke((T11?)CoproductValue); break;
+                case 12: ifTwelfth?.Invoke((T12?)CoproductValue); break;
+                case 13: ifThirteenth?.Invoke((T13?)CoproductValue); break;
+                case 14: ifFourteenth?.Invoke((T14?)CoproductValue); break;
+                case 15: ifFifteenth?.Invoke((T15?)CoproductValue); break;
             }
         }
     }
@@ -4417,7 +4417,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct16(int discriminator, object value)
+        protected Coproduct16(int discriminator, object? value)
             : base(16, discriminator, value)
         {
         }
@@ -4489,145 +4489,145 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
         public IOption<T8> Eighth
         {
-            get { return IsEighth ? Option.Valued((T8)CoproductValue) : Option.Empty<T8>(); }
+            get { return IsEighth ? Option.Valued((T8?)CoproductValue) : Option.Empty<T8>(); }
         }
         public IOption<T9> Ninth
         {
-            get { return IsNinth ? Option.Valued((T9)CoproductValue) : Option.Empty<T9>(); }
+            get { return IsNinth ? Option.Valued((T9?)CoproductValue) : Option.Empty<T9>(); }
         }
         public IOption<T10> Tenth
         {
-            get { return IsTenth ? Option.Valued((T10)CoproductValue) : Option.Empty<T10>(); }
+            get { return IsTenth ? Option.Valued((T10?)CoproductValue) : Option.Empty<T10>(); }
         }
         public IOption<T11> Eleventh
         {
-            get { return IsEleventh ? Option.Valued((T11)CoproductValue) : Option.Empty<T11>(); }
+            get { return IsEleventh ? Option.Valued((T11?)CoproductValue) : Option.Empty<T11>(); }
         }
         public IOption<T12> Twelfth
         {
-            get { return IsTwelfth ? Option.Valued((T12)CoproductValue) : Option.Empty<T12>(); }
+            get { return IsTwelfth ? Option.Valued((T12?)CoproductValue) : Option.Empty<T12>(); }
         }
         public IOption<T13> Thirteenth
         {
-            get { return IsThirteenth ? Option.Valued((T13)CoproductValue) : Option.Empty<T13>(); }
+            get { return IsThirteenth ? Option.Valued((T13?)CoproductValue) : Option.Empty<T13>(); }
         }
         public IOption<T14> Fourteenth
         {
-            get { return IsFourteenth ? Option.Valued((T14)CoproductValue) : Option.Empty<T14>(); }
+            get { return IsFourteenth ? Option.Valued((T14?)CoproductValue) : Option.Empty<T14>(); }
         }
         public IOption<T15> Fifteenth
         {
-            get { return IsFifteenth ? Option.Valued((T15)CoproductValue) : Option.Empty<T15>(); }
+            get { return IsFifteenth ? Option.Valued((T15?)CoproductValue) : Option.Empty<T15>(); }
         }
         public IOption<T16> Sixteenth
         {
-            get { return IsSixteenth ? Option.Valued((T16)CoproductValue) : Option.Empty<T16>(); }
+            get { return IsSixteenth ? Option.Valued((T16?)CoproductValue) : Option.Empty<T16>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth,
-            Func<T15, R> ifFifteenth,
-            Func<T16, R> ifSixteenth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth,
+            Func<T15?, R> ifFifteenth,
+            Func<T16?, R> ifSixteenth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                case 8: return ifEighth((T8)CoproductValue);
-                case 9: return ifNinth((T9)CoproductValue);
-                case 10: return ifTenth((T10)CoproductValue);
-                case 11: return ifEleventh((T11)CoproductValue);
-                case 12: return ifTwelfth((T12)CoproductValue);
-                case 13: return ifThirteenth((T13)CoproductValue);
-                case 14: return ifFourteenth((T14)CoproductValue);
-                case 15: return ifFifteenth((T15)CoproductValue);
-                case 16: return ifSixteenth((T16)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                case 8: return ifEighth((T8?)CoproductValue);
+                case 9: return ifNinth((T9?)CoproductValue);
+                case 10: return ifTenth((T10?)CoproductValue);
+                case 11: return ifEleventh((T11?)CoproductValue);
+                case 12: return ifTwelfth((T12?)CoproductValue);
+                case 13: return ifThirteenth((T13?)CoproductValue);
+                case 14: return ifFourteenth((T14?)CoproductValue);
+                case 15: return ifFifteenth((T15?)CoproductValue);
+                case 16: return ifSixteenth((T16?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null,
-            Action<T15>? ifFifteenth = null,
-            Action<T16>? ifSixteenth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null,
+            Action<T15?>? ifFifteenth = null,
+            Action<T16?>? ifSixteenth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
-                case 8: ifEighth?.Invoke((T8)CoproductValue); break;
-                case 9: ifNinth?.Invoke((T9)CoproductValue); break;
-                case 10: ifTenth?.Invoke((T10)CoproductValue); break;
-                case 11: ifEleventh?.Invoke((T11)CoproductValue); break;
-                case 12: ifTwelfth?.Invoke((T12)CoproductValue); break;
-                case 13: ifThirteenth?.Invoke((T13)CoproductValue); break;
-                case 14: ifFourteenth?.Invoke((T14)CoproductValue); break;
-                case 15: ifFifteenth?.Invoke((T15)CoproductValue); break;
-                case 16: ifSixteenth?.Invoke((T16)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
+                case 8: ifEighth?.Invoke((T8?)CoproductValue); break;
+                case 9: ifNinth?.Invoke((T9?)CoproductValue); break;
+                case 10: ifTenth?.Invoke((T10?)CoproductValue); break;
+                case 11: ifEleventh?.Invoke((T11?)CoproductValue); break;
+                case 12: ifTwelfth?.Invoke((T12?)CoproductValue); break;
+                case 13: ifThirteenth?.Invoke((T13?)CoproductValue); break;
+                case 14: ifFourteenth?.Invoke((T14?)CoproductValue); break;
+                case 15: ifFifteenth?.Invoke((T15?)CoproductValue); break;
+                case 16: ifSixteenth?.Invoke((T16?)CoproductValue); break;
             }
         }
     }
@@ -4929,7 +4929,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct17(int discriminator, object value)
+        protected Coproduct17(int discriminator, object? value)
             : base(17, discriminator, value)
         {
         }
@@ -5005,153 +5005,153 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
         public IOption<T8> Eighth
         {
-            get { return IsEighth ? Option.Valued((T8)CoproductValue) : Option.Empty<T8>(); }
+            get { return IsEighth ? Option.Valued((T8?)CoproductValue) : Option.Empty<T8>(); }
         }
         public IOption<T9> Ninth
         {
-            get { return IsNinth ? Option.Valued((T9)CoproductValue) : Option.Empty<T9>(); }
+            get { return IsNinth ? Option.Valued((T9?)CoproductValue) : Option.Empty<T9>(); }
         }
         public IOption<T10> Tenth
         {
-            get { return IsTenth ? Option.Valued((T10)CoproductValue) : Option.Empty<T10>(); }
+            get { return IsTenth ? Option.Valued((T10?)CoproductValue) : Option.Empty<T10>(); }
         }
         public IOption<T11> Eleventh
         {
-            get { return IsEleventh ? Option.Valued((T11)CoproductValue) : Option.Empty<T11>(); }
+            get { return IsEleventh ? Option.Valued((T11?)CoproductValue) : Option.Empty<T11>(); }
         }
         public IOption<T12> Twelfth
         {
-            get { return IsTwelfth ? Option.Valued((T12)CoproductValue) : Option.Empty<T12>(); }
+            get { return IsTwelfth ? Option.Valued((T12?)CoproductValue) : Option.Empty<T12>(); }
         }
         public IOption<T13> Thirteenth
         {
-            get { return IsThirteenth ? Option.Valued((T13)CoproductValue) : Option.Empty<T13>(); }
+            get { return IsThirteenth ? Option.Valued((T13?)CoproductValue) : Option.Empty<T13>(); }
         }
         public IOption<T14> Fourteenth
         {
-            get { return IsFourteenth ? Option.Valued((T14)CoproductValue) : Option.Empty<T14>(); }
+            get { return IsFourteenth ? Option.Valued((T14?)CoproductValue) : Option.Empty<T14>(); }
         }
         public IOption<T15> Fifteenth
         {
-            get { return IsFifteenth ? Option.Valued((T15)CoproductValue) : Option.Empty<T15>(); }
+            get { return IsFifteenth ? Option.Valued((T15?)CoproductValue) : Option.Empty<T15>(); }
         }
         public IOption<T16> Sixteenth
         {
-            get { return IsSixteenth ? Option.Valued((T16)CoproductValue) : Option.Empty<T16>(); }
+            get { return IsSixteenth ? Option.Valued((T16?)CoproductValue) : Option.Empty<T16>(); }
         }
         public IOption<T17> Seventeenth
         {
-            get { return IsSeventeenth ? Option.Valued((T17)CoproductValue) : Option.Empty<T17>(); }
+            get { return IsSeventeenth ? Option.Valued((T17?)CoproductValue) : Option.Empty<T17>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth,
-            Func<T15, R> ifFifteenth,
-            Func<T16, R> ifSixteenth,
-            Func<T17, R> ifSeventeenth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth,
+            Func<T15?, R> ifFifteenth,
+            Func<T16?, R> ifSixteenth,
+            Func<T17?, R> ifSeventeenth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                case 8: return ifEighth((T8)CoproductValue);
-                case 9: return ifNinth((T9)CoproductValue);
-                case 10: return ifTenth((T10)CoproductValue);
-                case 11: return ifEleventh((T11)CoproductValue);
-                case 12: return ifTwelfth((T12)CoproductValue);
-                case 13: return ifThirteenth((T13)CoproductValue);
-                case 14: return ifFourteenth((T14)CoproductValue);
-                case 15: return ifFifteenth((T15)CoproductValue);
-                case 16: return ifSixteenth((T16)CoproductValue);
-                case 17: return ifSeventeenth((T17)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                case 8: return ifEighth((T8?)CoproductValue);
+                case 9: return ifNinth((T9?)CoproductValue);
+                case 10: return ifTenth((T10?)CoproductValue);
+                case 11: return ifEleventh((T11?)CoproductValue);
+                case 12: return ifTwelfth((T12?)CoproductValue);
+                case 13: return ifThirteenth((T13?)CoproductValue);
+                case 14: return ifFourteenth((T14?)CoproductValue);
+                case 15: return ifFifteenth((T15?)CoproductValue);
+                case 16: return ifSixteenth((T16?)CoproductValue);
+                case 17: return ifSeventeenth((T17?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null,
-            Action<T15>? ifFifteenth = null,
-            Action<T16>? ifSixteenth = null,
-            Action<T17>? ifSeventeenth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null,
+            Action<T15?>? ifFifteenth = null,
+            Action<T16?>? ifSixteenth = null,
+            Action<T17?>? ifSeventeenth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
-                case 8: ifEighth?.Invoke((T8)CoproductValue); break;
-                case 9: ifNinth?.Invoke((T9)CoproductValue); break;
-                case 10: ifTenth?.Invoke((T10)CoproductValue); break;
-                case 11: ifEleventh?.Invoke((T11)CoproductValue); break;
-                case 12: ifTwelfth?.Invoke((T12)CoproductValue); break;
-                case 13: ifThirteenth?.Invoke((T13)CoproductValue); break;
-                case 14: ifFourteenth?.Invoke((T14)CoproductValue); break;
-                case 15: ifFifteenth?.Invoke((T15)CoproductValue); break;
-                case 16: ifSixteenth?.Invoke((T16)CoproductValue); break;
-                case 17: ifSeventeenth?.Invoke((T17)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
+                case 8: ifEighth?.Invoke((T8?)CoproductValue); break;
+                case 9: ifNinth?.Invoke((T9?)CoproductValue); break;
+                case 10: ifTenth?.Invoke((T10?)CoproductValue); break;
+                case 11: ifEleventh?.Invoke((T11?)CoproductValue); break;
+                case 12: ifTwelfth?.Invoke((T12?)CoproductValue); break;
+                case 13: ifThirteenth?.Invoke((T13?)CoproductValue); break;
+                case 14: ifFourteenth?.Invoke((T14?)CoproductValue); break;
+                case 15: ifFifteenth?.Invoke((T15?)CoproductValue); break;
+                case 16: ifSixteenth?.Invoke((T16?)CoproductValue); break;
+                case 17: ifSeventeenth?.Invoke((T17?)CoproductValue); break;
             }
         }
     }
@@ -5469,7 +5469,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct18(int discriminator, object value)
+        protected Coproduct18(int discriminator, object? value)
             : base(18, discriminator, value)
         {
         }
@@ -5549,161 +5549,161 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
         public IOption<T8> Eighth
         {
-            get { return IsEighth ? Option.Valued((T8)CoproductValue) : Option.Empty<T8>(); }
+            get { return IsEighth ? Option.Valued((T8?)CoproductValue) : Option.Empty<T8>(); }
         }
         public IOption<T9> Ninth
         {
-            get { return IsNinth ? Option.Valued((T9)CoproductValue) : Option.Empty<T9>(); }
+            get { return IsNinth ? Option.Valued((T9?)CoproductValue) : Option.Empty<T9>(); }
         }
         public IOption<T10> Tenth
         {
-            get { return IsTenth ? Option.Valued((T10)CoproductValue) : Option.Empty<T10>(); }
+            get { return IsTenth ? Option.Valued((T10?)CoproductValue) : Option.Empty<T10>(); }
         }
         public IOption<T11> Eleventh
         {
-            get { return IsEleventh ? Option.Valued((T11)CoproductValue) : Option.Empty<T11>(); }
+            get { return IsEleventh ? Option.Valued((T11?)CoproductValue) : Option.Empty<T11>(); }
         }
         public IOption<T12> Twelfth
         {
-            get { return IsTwelfth ? Option.Valued((T12)CoproductValue) : Option.Empty<T12>(); }
+            get { return IsTwelfth ? Option.Valued((T12?)CoproductValue) : Option.Empty<T12>(); }
         }
         public IOption<T13> Thirteenth
         {
-            get { return IsThirteenth ? Option.Valued((T13)CoproductValue) : Option.Empty<T13>(); }
+            get { return IsThirteenth ? Option.Valued((T13?)CoproductValue) : Option.Empty<T13>(); }
         }
         public IOption<T14> Fourteenth
         {
-            get { return IsFourteenth ? Option.Valued((T14)CoproductValue) : Option.Empty<T14>(); }
+            get { return IsFourteenth ? Option.Valued((T14?)CoproductValue) : Option.Empty<T14>(); }
         }
         public IOption<T15> Fifteenth
         {
-            get { return IsFifteenth ? Option.Valued((T15)CoproductValue) : Option.Empty<T15>(); }
+            get { return IsFifteenth ? Option.Valued((T15?)CoproductValue) : Option.Empty<T15>(); }
         }
         public IOption<T16> Sixteenth
         {
-            get { return IsSixteenth ? Option.Valued((T16)CoproductValue) : Option.Empty<T16>(); }
+            get { return IsSixteenth ? Option.Valued((T16?)CoproductValue) : Option.Empty<T16>(); }
         }
         public IOption<T17> Seventeenth
         {
-            get { return IsSeventeenth ? Option.Valued((T17)CoproductValue) : Option.Empty<T17>(); }
+            get { return IsSeventeenth ? Option.Valued((T17?)CoproductValue) : Option.Empty<T17>(); }
         }
         public IOption<T18> Eighteenth
         {
-            get { return IsEighteenth ? Option.Valued((T18)CoproductValue) : Option.Empty<T18>(); }
+            get { return IsEighteenth ? Option.Valued((T18?)CoproductValue) : Option.Empty<T18>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth,
-            Func<T15, R> ifFifteenth,
-            Func<T16, R> ifSixteenth,
-            Func<T17, R> ifSeventeenth,
-            Func<T18, R> ifEighteenth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth,
+            Func<T15?, R> ifFifteenth,
+            Func<T16?, R> ifSixteenth,
+            Func<T17?, R> ifSeventeenth,
+            Func<T18?, R> ifEighteenth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                case 8: return ifEighth((T8)CoproductValue);
-                case 9: return ifNinth((T9)CoproductValue);
-                case 10: return ifTenth((T10)CoproductValue);
-                case 11: return ifEleventh((T11)CoproductValue);
-                case 12: return ifTwelfth((T12)CoproductValue);
-                case 13: return ifThirteenth((T13)CoproductValue);
-                case 14: return ifFourteenth((T14)CoproductValue);
-                case 15: return ifFifteenth((T15)CoproductValue);
-                case 16: return ifSixteenth((T16)CoproductValue);
-                case 17: return ifSeventeenth((T17)CoproductValue);
-                case 18: return ifEighteenth((T18)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                case 8: return ifEighth((T8?)CoproductValue);
+                case 9: return ifNinth((T9?)CoproductValue);
+                case 10: return ifTenth((T10?)CoproductValue);
+                case 11: return ifEleventh((T11?)CoproductValue);
+                case 12: return ifTwelfth((T12?)CoproductValue);
+                case 13: return ifThirteenth((T13?)CoproductValue);
+                case 14: return ifFourteenth((T14?)CoproductValue);
+                case 15: return ifFifteenth((T15?)CoproductValue);
+                case 16: return ifSixteenth((T16?)CoproductValue);
+                case 17: return ifSeventeenth((T17?)CoproductValue);
+                case 18: return ifEighteenth((T18?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null,
-            Action<T15>? ifFifteenth = null,
-            Action<T16>? ifSixteenth = null,
-            Action<T17>? ifSeventeenth = null,
-            Action<T18>? ifEighteenth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null,
+            Action<T15?>? ifFifteenth = null,
+            Action<T16?>? ifSixteenth = null,
+            Action<T17?>? ifSeventeenth = null,
+            Action<T18?>? ifEighteenth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
-                case 8: ifEighth?.Invoke((T8)CoproductValue); break;
-                case 9: ifNinth?.Invoke((T9)CoproductValue); break;
-                case 10: ifTenth?.Invoke((T10)CoproductValue); break;
-                case 11: ifEleventh?.Invoke((T11)CoproductValue); break;
-                case 12: ifTwelfth?.Invoke((T12)CoproductValue); break;
-                case 13: ifThirteenth?.Invoke((T13)CoproductValue); break;
-                case 14: ifFourteenth?.Invoke((T14)CoproductValue); break;
-                case 15: ifFifteenth?.Invoke((T15)CoproductValue); break;
-                case 16: ifSixteenth?.Invoke((T16)CoproductValue); break;
-                case 17: ifSeventeenth?.Invoke((T17)CoproductValue); break;
-                case 18: ifEighteenth?.Invoke((T18)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
+                case 8: ifEighth?.Invoke((T8?)CoproductValue); break;
+                case 9: ifNinth?.Invoke((T9?)CoproductValue); break;
+                case 10: ifTenth?.Invoke((T10?)CoproductValue); break;
+                case 11: ifEleventh?.Invoke((T11?)CoproductValue); break;
+                case 12: ifTwelfth?.Invoke((T12?)CoproductValue); break;
+                case 13: ifThirteenth?.Invoke((T13?)CoproductValue); break;
+                case 14: ifFourteenth?.Invoke((T14?)CoproductValue); break;
+                case 15: ifFifteenth?.Invoke((T15?)CoproductValue); break;
+                case 16: ifSixteenth?.Invoke((T16?)CoproductValue); break;
+                case 17: ifSeventeenth?.Invoke((T17?)CoproductValue); break;
+                case 18: ifEighteenth?.Invoke((T18?)CoproductValue); break;
             }
         }
     }
@@ -6037,7 +6037,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct19(int discriminator, object value)
+        protected Coproduct19(int discriminator, object? value)
             : base(19, discriminator, value)
         {
         }
@@ -6121,169 +6121,169 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
         public IOption<T8> Eighth
         {
-            get { return IsEighth ? Option.Valued((T8)CoproductValue) : Option.Empty<T8>(); }
+            get { return IsEighth ? Option.Valued((T8?)CoproductValue) : Option.Empty<T8>(); }
         }
         public IOption<T9> Ninth
         {
-            get { return IsNinth ? Option.Valued((T9)CoproductValue) : Option.Empty<T9>(); }
+            get { return IsNinth ? Option.Valued((T9?)CoproductValue) : Option.Empty<T9>(); }
         }
         public IOption<T10> Tenth
         {
-            get { return IsTenth ? Option.Valued((T10)CoproductValue) : Option.Empty<T10>(); }
+            get { return IsTenth ? Option.Valued((T10?)CoproductValue) : Option.Empty<T10>(); }
         }
         public IOption<T11> Eleventh
         {
-            get { return IsEleventh ? Option.Valued((T11)CoproductValue) : Option.Empty<T11>(); }
+            get { return IsEleventh ? Option.Valued((T11?)CoproductValue) : Option.Empty<T11>(); }
         }
         public IOption<T12> Twelfth
         {
-            get { return IsTwelfth ? Option.Valued((T12)CoproductValue) : Option.Empty<T12>(); }
+            get { return IsTwelfth ? Option.Valued((T12?)CoproductValue) : Option.Empty<T12>(); }
         }
         public IOption<T13> Thirteenth
         {
-            get { return IsThirteenth ? Option.Valued((T13)CoproductValue) : Option.Empty<T13>(); }
+            get { return IsThirteenth ? Option.Valued((T13?)CoproductValue) : Option.Empty<T13>(); }
         }
         public IOption<T14> Fourteenth
         {
-            get { return IsFourteenth ? Option.Valued((T14)CoproductValue) : Option.Empty<T14>(); }
+            get { return IsFourteenth ? Option.Valued((T14?)CoproductValue) : Option.Empty<T14>(); }
         }
         public IOption<T15> Fifteenth
         {
-            get { return IsFifteenth ? Option.Valued((T15)CoproductValue) : Option.Empty<T15>(); }
+            get { return IsFifteenth ? Option.Valued((T15?)CoproductValue) : Option.Empty<T15>(); }
         }
         public IOption<T16> Sixteenth
         {
-            get { return IsSixteenth ? Option.Valued((T16)CoproductValue) : Option.Empty<T16>(); }
+            get { return IsSixteenth ? Option.Valued((T16?)CoproductValue) : Option.Empty<T16>(); }
         }
         public IOption<T17> Seventeenth
         {
-            get { return IsSeventeenth ? Option.Valued((T17)CoproductValue) : Option.Empty<T17>(); }
+            get { return IsSeventeenth ? Option.Valued((T17?)CoproductValue) : Option.Empty<T17>(); }
         }
         public IOption<T18> Eighteenth
         {
-            get { return IsEighteenth ? Option.Valued((T18)CoproductValue) : Option.Empty<T18>(); }
+            get { return IsEighteenth ? Option.Valued((T18?)CoproductValue) : Option.Empty<T18>(); }
         }
         public IOption<T19> Nineteenth
         {
-            get { return IsNineteenth ? Option.Valued((T19)CoproductValue) : Option.Empty<T19>(); }
+            get { return IsNineteenth ? Option.Valued((T19?)CoproductValue) : Option.Empty<T19>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth,
-            Func<T15, R> ifFifteenth,
-            Func<T16, R> ifSixteenth,
-            Func<T17, R> ifSeventeenth,
-            Func<T18, R> ifEighteenth,
-            Func<T19, R> ifNineteenth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth,
+            Func<T15?, R> ifFifteenth,
+            Func<T16?, R> ifSixteenth,
+            Func<T17?, R> ifSeventeenth,
+            Func<T18?, R> ifEighteenth,
+            Func<T19?, R> ifNineteenth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                case 8: return ifEighth((T8)CoproductValue);
-                case 9: return ifNinth((T9)CoproductValue);
-                case 10: return ifTenth((T10)CoproductValue);
-                case 11: return ifEleventh((T11)CoproductValue);
-                case 12: return ifTwelfth((T12)CoproductValue);
-                case 13: return ifThirteenth((T13)CoproductValue);
-                case 14: return ifFourteenth((T14)CoproductValue);
-                case 15: return ifFifteenth((T15)CoproductValue);
-                case 16: return ifSixteenth((T16)CoproductValue);
-                case 17: return ifSeventeenth((T17)CoproductValue);
-                case 18: return ifEighteenth((T18)CoproductValue);
-                case 19: return ifNineteenth((T19)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                case 8: return ifEighth((T8?)CoproductValue);
+                case 9: return ifNinth((T9?)CoproductValue);
+                case 10: return ifTenth((T10?)CoproductValue);
+                case 11: return ifEleventh((T11?)CoproductValue);
+                case 12: return ifTwelfth((T12?)CoproductValue);
+                case 13: return ifThirteenth((T13?)CoproductValue);
+                case 14: return ifFourteenth((T14?)CoproductValue);
+                case 15: return ifFifteenth((T15?)CoproductValue);
+                case 16: return ifSixteenth((T16?)CoproductValue);
+                case 17: return ifSeventeenth((T17?)CoproductValue);
+                case 18: return ifEighteenth((T18?)CoproductValue);
+                case 19: return ifNineteenth((T19?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null,
-            Action<T15>? ifFifteenth = null,
-            Action<T16>? ifSixteenth = null,
-            Action<T17>? ifSeventeenth = null,
-            Action<T18>? ifEighteenth = null,
-            Action<T19>? ifNineteenth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null,
+            Action<T15?>? ifFifteenth = null,
+            Action<T16?>? ifSixteenth = null,
+            Action<T17?>? ifSeventeenth = null,
+            Action<T18?>? ifEighteenth = null,
+            Action<T19?>? ifNineteenth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
-                case 8: ifEighth?.Invoke((T8)CoproductValue); break;
-                case 9: ifNinth?.Invoke((T9)CoproductValue); break;
-                case 10: ifTenth?.Invoke((T10)CoproductValue); break;
-                case 11: ifEleventh?.Invoke((T11)CoproductValue); break;
-                case 12: ifTwelfth?.Invoke((T12)CoproductValue); break;
-                case 13: ifThirteenth?.Invoke((T13)CoproductValue); break;
-                case 14: ifFourteenth?.Invoke((T14)CoproductValue); break;
-                case 15: ifFifteenth?.Invoke((T15)CoproductValue); break;
-                case 16: ifSixteenth?.Invoke((T16)CoproductValue); break;
-                case 17: ifSeventeenth?.Invoke((T17)CoproductValue); break;
-                case 18: ifEighteenth?.Invoke((T18)CoproductValue); break;
-                case 19: ifNineteenth?.Invoke((T19)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
+                case 8: ifEighth?.Invoke((T8?)CoproductValue); break;
+                case 9: ifNinth?.Invoke((T9?)CoproductValue); break;
+                case 10: ifTenth?.Invoke((T10?)CoproductValue); break;
+                case 11: ifEleventh?.Invoke((T11?)CoproductValue); break;
+                case 12: ifTwelfth?.Invoke((T12?)CoproductValue); break;
+                case 13: ifThirteenth?.Invoke((T13?)CoproductValue); break;
+                case 14: ifFourteenth?.Invoke((T14?)CoproductValue); break;
+                case 15: ifFifteenth?.Invoke((T15?)CoproductValue); break;
+                case 16: ifSixteenth?.Invoke((T16?)CoproductValue); break;
+                case 17: ifSeventeenth?.Invoke((T17?)CoproductValue); break;
+                case 18: ifEighteenth?.Invoke((T18?)CoproductValue); break;
+                case 19: ifNineteenth?.Invoke((T19?)CoproductValue); break;
             }
         }
     }
@@ -6633,7 +6633,7 @@ namespace FuncSharp
         /// </summary>
         /// <param name="discriminator">Discriminator of the value from interval [1, arity].</param>
         /// <param name="value">Value of the coproduct on the position defined by the discriminator.</param>
-        protected Coproduct20(int discriminator, object value)
+        protected Coproduct20(int discriminator, object? value)
             : base(20, discriminator, value)
         {
         }
@@ -6721,177 +6721,177 @@ namespace FuncSharp
 
         public IOption<T1> First
         {
-            get { return IsFirst ? Option.Valued((T1)CoproductValue) : Option.Empty<T1>(); }
+            get { return IsFirst ? Option.Valued((T1?)CoproductValue) : Option.Empty<T1>(); }
         }
         public IOption<T2> Second
         {
-            get { return IsSecond ? Option.Valued((T2)CoproductValue) : Option.Empty<T2>(); }
+            get { return IsSecond ? Option.Valued((T2?)CoproductValue) : Option.Empty<T2>(); }
         }
         public IOption<T3> Third
         {
-            get { return IsThird ? Option.Valued((T3)CoproductValue) : Option.Empty<T3>(); }
+            get { return IsThird ? Option.Valued((T3?)CoproductValue) : Option.Empty<T3>(); }
         }
         public IOption<T4> Fourth
         {
-            get { return IsFourth ? Option.Valued((T4)CoproductValue) : Option.Empty<T4>(); }
+            get { return IsFourth ? Option.Valued((T4?)CoproductValue) : Option.Empty<T4>(); }
         }
         public IOption<T5> Fifth
         {
-            get { return IsFifth ? Option.Valued((T5)CoproductValue) : Option.Empty<T5>(); }
+            get { return IsFifth ? Option.Valued((T5?)CoproductValue) : Option.Empty<T5>(); }
         }
         public IOption<T6> Sixth
         {
-            get { return IsSixth ? Option.Valued((T6)CoproductValue) : Option.Empty<T6>(); }
+            get { return IsSixth ? Option.Valued((T6?)CoproductValue) : Option.Empty<T6>(); }
         }
         public IOption<T7> Seventh
         {
-            get { return IsSeventh ? Option.Valued((T7)CoproductValue) : Option.Empty<T7>(); }
+            get { return IsSeventh ? Option.Valued((T7?)CoproductValue) : Option.Empty<T7>(); }
         }
         public IOption<T8> Eighth
         {
-            get { return IsEighth ? Option.Valued((T8)CoproductValue) : Option.Empty<T8>(); }
+            get { return IsEighth ? Option.Valued((T8?)CoproductValue) : Option.Empty<T8>(); }
         }
         public IOption<T9> Ninth
         {
-            get { return IsNinth ? Option.Valued((T9)CoproductValue) : Option.Empty<T9>(); }
+            get { return IsNinth ? Option.Valued((T9?)CoproductValue) : Option.Empty<T9>(); }
         }
         public IOption<T10> Tenth
         {
-            get { return IsTenth ? Option.Valued((T10)CoproductValue) : Option.Empty<T10>(); }
+            get { return IsTenth ? Option.Valued((T10?)CoproductValue) : Option.Empty<T10>(); }
         }
         public IOption<T11> Eleventh
         {
-            get { return IsEleventh ? Option.Valued((T11)CoproductValue) : Option.Empty<T11>(); }
+            get { return IsEleventh ? Option.Valued((T11?)CoproductValue) : Option.Empty<T11>(); }
         }
         public IOption<T12> Twelfth
         {
-            get { return IsTwelfth ? Option.Valued((T12)CoproductValue) : Option.Empty<T12>(); }
+            get { return IsTwelfth ? Option.Valued((T12?)CoproductValue) : Option.Empty<T12>(); }
         }
         public IOption<T13> Thirteenth
         {
-            get { return IsThirteenth ? Option.Valued((T13)CoproductValue) : Option.Empty<T13>(); }
+            get { return IsThirteenth ? Option.Valued((T13?)CoproductValue) : Option.Empty<T13>(); }
         }
         public IOption<T14> Fourteenth
         {
-            get { return IsFourteenth ? Option.Valued((T14)CoproductValue) : Option.Empty<T14>(); }
+            get { return IsFourteenth ? Option.Valued((T14?)CoproductValue) : Option.Empty<T14>(); }
         }
         public IOption<T15> Fifteenth
         {
-            get { return IsFifteenth ? Option.Valued((T15)CoproductValue) : Option.Empty<T15>(); }
+            get { return IsFifteenth ? Option.Valued((T15?)CoproductValue) : Option.Empty<T15>(); }
         }
         public IOption<T16> Sixteenth
         {
-            get { return IsSixteenth ? Option.Valued((T16)CoproductValue) : Option.Empty<T16>(); }
+            get { return IsSixteenth ? Option.Valued((T16?)CoproductValue) : Option.Empty<T16>(); }
         }
         public IOption<T17> Seventeenth
         {
-            get { return IsSeventeenth ? Option.Valued((T17)CoproductValue) : Option.Empty<T17>(); }
+            get { return IsSeventeenth ? Option.Valued((T17?)CoproductValue) : Option.Empty<T17>(); }
         }
         public IOption<T18> Eighteenth
         {
-            get { return IsEighteenth ? Option.Valued((T18)CoproductValue) : Option.Empty<T18>(); }
+            get { return IsEighteenth ? Option.Valued((T18?)CoproductValue) : Option.Empty<T18>(); }
         }
         public IOption<T19> Nineteenth
         {
-            get { return IsNineteenth ? Option.Valued((T19)CoproductValue) : Option.Empty<T19>(); }
+            get { return IsNineteenth ? Option.Valued((T19?)CoproductValue) : Option.Empty<T19>(); }
         }
         public IOption<T20> Twentieth
         {
-            get { return IsTwentieth ? Option.Valued((T20)CoproductValue) : Option.Empty<T20>(); }
+            get { return IsTwentieth ? Option.Valued((T20?)CoproductValue) : Option.Empty<T20>(); }
         }
 
         public R Match<R>(
-            Func<T1, R> ifFirst,
-            Func<T2, R> ifSecond,
-            Func<T3, R> ifThird,
-            Func<T4, R> ifFourth,
-            Func<T5, R> ifFifth,
-            Func<T6, R> ifSixth,
-            Func<T7, R> ifSeventh,
-            Func<T8, R> ifEighth,
-            Func<T9, R> ifNinth,
-            Func<T10, R> ifTenth,
-            Func<T11, R> ifEleventh,
-            Func<T12, R> ifTwelfth,
-            Func<T13, R> ifThirteenth,
-            Func<T14, R> ifFourteenth,
-            Func<T15, R> ifFifteenth,
-            Func<T16, R> ifSixteenth,
-            Func<T17, R> ifSeventeenth,
-            Func<T18, R> ifEighteenth,
-            Func<T19, R> ifNineteenth,
-            Func<T20, R> ifTwentieth)
+            Func<T1?, R> ifFirst,
+            Func<T2?, R> ifSecond,
+            Func<T3?, R> ifThird,
+            Func<T4?, R> ifFourth,
+            Func<T5?, R> ifFifth,
+            Func<T6?, R> ifSixth,
+            Func<T7?, R> ifSeventh,
+            Func<T8?, R> ifEighth,
+            Func<T9?, R> ifNinth,
+            Func<T10?, R> ifTenth,
+            Func<T11?, R> ifEleventh,
+            Func<T12?, R> ifTwelfth,
+            Func<T13?, R> ifThirteenth,
+            Func<T14?, R> ifFourteenth,
+            Func<T15?, R> ifFifteenth,
+            Func<T16?, R> ifSixteenth,
+            Func<T17?, R> ifSeventeenth,
+            Func<T18?, R> ifEighteenth,
+            Func<T19?, R> ifNineteenth,
+            Func<T20?, R> ifTwentieth)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: return ifFirst((T1)CoproductValue);
-                case 2: return ifSecond((T2)CoproductValue);
-                case 3: return ifThird((T3)CoproductValue);
-                case 4: return ifFourth((T4)CoproductValue);
-                case 5: return ifFifth((T5)CoproductValue);
-                case 6: return ifSixth((T6)CoproductValue);
-                case 7: return ifSeventh((T7)CoproductValue);
-                case 8: return ifEighth((T8)CoproductValue);
-                case 9: return ifNinth((T9)CoproductValue);
-                case 10: return ifTenth((T10)CoproductValue);
-                case 11: return ifEleventh((T11)CoproductValue);
-                case 12: return ifTwelfth((T12)CoproductValue);
-                case 13: return ifThirteenth((T13)CoproductValue);
-                case 14: return ifFourteenth((T14)CoproductValue);
-                case 15: return ifFifteenth((T15)CoproductValue);
-                case 16: return ifSixteenth((T16)CoproductValue);
-                case 17: return ifSeventeenth((T17)CoproductValue);
-                case 18: return ifEighteenth((T18)CoproductValue);
-                case 19: return ifNineteenth((T19)CoproductValue);
-                case 20: return ifTwentieth((T20)CoproductValue);
-                default: return default(R);
+                case 1: return ifFirst((T1?)CoproductValue);
+                case 2: return ifSecond((T2?)CoproductValue);
+                case 3: return ifThird((T3?)CoproductValue);
+                case 4: return ifFourth((T4?)CoproductValue);
+                case 5: return ifFifth((T5?)CoproductValue);
+                case 6: return ifSixth((T6?)CoproductValue);
+                case 7: return ifSeventh((T7?)CoproductValue);
+                case 8: return ifEighth((T8?)CoproductValue);
+                case 9: return ifNinth((T9?)CoproductValue);
+                case 10: return ifTenth((T10?)CoproductValue);
+                case 11: return ifEleventh((T11?)CoproductValue);
+                case 12: return ifTwelfth((T12?)CoproductValue);
+                case 13: return ifThirteenth((T13?)CoproductValue);
+                case 14: return ifFourteenth((T14?)CoproductValue);
+                case 15: return ifFifteenth((T15?)CoproductValue);
+                case 16: return ifSixteenth((T16?)CoproductValue);
+                case 17: return ifSeventeenth((T17?)CoproductValue);
+                case 18: return ifEighteenth((T18?)CoproductValue);
+                case 19: return ifNineteenth((T19?)CoproductValue);
+                case 20: return ifTwentieth((T20?)CoproductValue);
+                default: return default!;
             }
         }
 
         public void Match(
-            Action<T1>? ifFirst = null,
-            Action<T2>? ifSecond = null,
-            Action<T3>? ifThird = null,
-            Action<T4>? ifFourth = null,
-            Action<T5>? ifFifth = null,
-            Action<T6>? ifSixth = null,
-            Action<T7>? ifSeventh = null,
-            Action<T8>? ifEighth = null,
-            Action<T9>? ifNinth = null,
-            Action<T10>? ifTenth = null,
-            Action<T11>? ifEleventh = null,
-            Action<T12>? ifTwelfth = null,
-            Action<T13>? ifThirteenth = null,
-            Action<T14>? ifFourteenth = null,
-            Action<T15>? ifFifteenth = null,
-            Action<T16>? ifSixteenth = null,
-            Action<T17>? ifSeventeenth = null,
-            Action<T18>? ifEighteenth = null,
-            Action<T19>? ifNineteenth = null,
-            Action<T20>? ifTwentieth = null)
+            Action<T1?>? ifFirst = null,
+            Action<T2?>? ifSecond = null,
+            Action<T3?>? ifThird = null,
+            Action<T4?>? ifFourth = null,
+            Action<T5?>? ifFifth = null,
+            Action<T6?>? ifSixth = null,
+            Action<T7?>? ifSeventh = null,
+            Action<T8?>? ifEighth = null,
+            Action<T9?>? ifNinth = null,
+            Action<T10?>? ifTenth = null,
+            Action<T11?>? ifEleventh = null,
+            Action<T12?>? ifTwelfth = null,
+            Action<T13?>? ifThirteenth = null,
+            Action<T14?>? ifFourteenth = null,
+            Action<T15?>? ifFifteenth = null,
+            Action<T16?>? ifSixteenth = null,
+            Action<T17?>? ifSeventeenth = null,
+            Action<T18?>? ifEighteenth = null,
+            Action<T19?>? ifNineteenth = null,
+            Action<T20?>? ifTwentieth = null)
         {
             switch (CoproductDiscriminator)
             {
-                case 1: ifFirst?.Invoke((T1)CoproductValue); break;
-                case 2: ifSecond?.Invoke((T2)CoproductValue); break;
-                case 3: ifThird?.Invoke((T3)CoproductValue); break;
-                case 4: ifFourth?.Invoke((T4)CoproductValue); break;
-                case 5: ifFifth?.Invoke((T5)CoproductValue); break;
-                case 6: ifSixth?.Invoke((T6)CoproductValue); break;
-                case 7: ifSeventh?.Invoke((T7)CoproductValue); break;
-                case 8: ifEighth?.Invoke((T8)CoproductValue); break;
-                case 9: ifNinth?.Invoke((T9)CoproductValue); break;
-                case 10: ifTenth?.Invoke((T10)CoproductValue); break;
-                case 11: ifEleventh?.Invoke((T11)CoproductValue); break;
-                case 12: ifTwelfth?.Invoke((T12)CoproductValue); break;
-                case 13: ifThirteenth?.Invoke((T13)CoproductValue); break;
-                case 14: ifFourteenth?.Invoke((T14)CoproductValue); break;
-                case 15: ifFifteenth?.Invoke((T15)CoproductValue); break;
-                case 16: ifSixteenth?.Invoke((T16)CoproductValue); break;
-                case 17: ifSeventeenth?.Invoke((T17)CoproductValue); break;
-                case 18: ifEighteenth?.Invoke((T18)CoproductValue); break;
-                case 19: ifNineteenth?.Invoke((T19)CoproductValue); break;
-                case 20: ifTwentieth?.Invoke((T20)CoproductValue); break;
+                case 1: ifFirst?.Invoke((T1?)CoproductValue); break;
+                case 2: ifSecond?.Invoke((T2?)CoproductValue); break;
+                case 3: ifThird?.Invoke((T3?)CoproductValue); break;
+                case 4: ifFourth?.Invoke((T4?)CoproductValue); break;
+                case 5: ifFifth?.Invoke((T5?)CoproductValue); break;
+                case 6: ifSixth?.Invoke((T6?)CoproductValue); break;
+                case 7: ifSeventh?.Invoke((T7?)CoproductValue); break;
+                case 8: ifEighth?.Invoke((T8?)CoproductValue); break;
+                case 9: ifNinth?.Invoke((T9?)CoproductValue); break;
+                case 10: ifTenth?.Invoke((T10?)CoproductValue); break;
+                case 11: ifEleventh?.Invoke((T11?)CoproductValue); break;
+                case 12: ifTwelfth?.Invoke((T12?)CoproductValue); break;
+                case 13: ifThirteenth?.Invoke((T13?)CoproductValue); break;
+                case 14: ifFourteenth?.Invoke((T14?)CoproductValue); break;
+                case 15: ifFifteenth?.Invoke((T15?)CoproductValue); break;
+                case 16: ifSixteenth?.Invoke((T16?)CoproductValue); break;
+                case 17: ifSeventeenth?.Invoke((T17?)CoproductValue); break;
+                case 18: ifEighteenth?.Invoke((T18?)CoproductValue); break;
+                case 19: ifNineteenth?.Invoke((T19?)CoproductValue); break;
+                case 20: ifTwentieth?.Invoke((T20?)CoproductValue); break;
             }
         }
     }
