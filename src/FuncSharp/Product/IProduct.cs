@@ -13,7 +13,7 @@ namespace FuncSharp
         /// <summary>
         /// Values of the product.
         /// </summary>
-        IEnumerable<object> ProductValues { get; }
+        IEnumerable<object?> ProductValues { get; }
     }
 
     /// <summary>

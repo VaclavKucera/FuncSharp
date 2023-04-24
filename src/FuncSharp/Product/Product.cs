@@ -10,7 +10,7 @@ namespace FuncSharp
     /// </summary>
     public abstract class ProductBase : IProduct
     {
-        public abstract IEnumerable<object> ProductValues { get; }
+        public abstract IEnumerable<object?> ProductValues { get; }
 
         private int? HashCode { get; set; }
 
@@ -140,7 +140,7 @@ namespace FuncSharp
 
         public T1 ProductValue1 { get; }
 
-        public override IEnumerable<object> ProductValues
+        public override IEnumerable<object?> ProductValues
         {
             get
             {
@@ -214,7 +214,7 @@ namespace FuncSharp
 
         public T2 ProductValue2 { get; }
 
-        public override IEnumerable<object> ProductValues
+        public override IEnumerable<object?> ProductValues
         {
             get
             {
@@ -293,7 +293,7 @@ namespace FuncSharp
 
         public T3 ProductValue3 { get; }
 
-        public override IEnumerable<object> ProductValues
+        public override IEnumerable<object?> ProductValues
         {
             get
             {
@@ -377,7 +377,7 @@ namespace FuncSharp
 
         public T4 ProductValue4 { get; }
 
-        public override IEnumerable<object> ProductValues
+        public override IEnumerable<object?> ProductValues
         {
             get
             {
@@ -466,7 +466,7 @@ namespace FuncSharp
 
         public T5 ProductValue5 { get; }
 
-        public override IEnumerable<object> ProductValues
+        public override IEnumerable<object?> ProductValues
         {
             get
             {
@@ -560,7 +560,7 @@ namespace FuncSharp
 
         public T6 ProductValue6 { get; }
 
-        public override IEnumerable<object> ProductValues
+        public override IEnumerable<object?> ProductValues
         {
             get
             {
@@ -659,7 +659,7 @@ namespace FuncSharp
 
         public T7 ProductValue7 { get; }
 
-        public override IEnumerable<object> ProductValues
+        public override IEnumerable<object?> ProductValues
         {
             get
             {
@@ -763,7 +763,7 @@ namespace FuncSharp
 
         public T8 ProductValue8 { get; }
 
-        public override IEnumerable<object> ProductValues
+        public override IEnumerable<object?> ProductValues
         {
             get
             {
