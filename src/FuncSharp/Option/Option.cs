@@ -24,7 +24,7 @@ namespace FuncSharp
         /// <summary>
         /// Creates a new option based on the specified value. Returns option with the value if is is non-null, empty otherwise.
         /// </summary>
-        public static IOption<A> Create<A>(A value)
+        public static IOption<A> Create<A>(A? value)
         {
             if (value != null)
             {
@@ -89,7 +89,7 @@ namespace FuncSharp
 
         public int CoproductDiscriminator => NonEmpty ? 1 : 2;
 
-        public object CoproductValue => NonEmpty ? (object)Value : Unit.Value;
+        public object? CoproductValue => NonEmpty ? Value : Unit.Value;
 
         public bool IsFirst => NonEmpty;
 
@@ -99,7 +99,7 @@ namespace FuncSharp
 
         public IOption<Unit> Second => IsEmpty ? Option.Unit : Option<Unit>.Empty;
 
-        public R Match<R>(Func<A, R> ifFirst, Func<Unit, R> ifSecond)
+        public R Match<R>(Func<A?, R> ifFirst, Func<Unit, R> ifSecond)
         {
             if (NonEmpty)
             {
@@ -108,7 +108,7 @@ namespace FuncSharp
             return ifSecond(Unit.Value);
         }
 
-        public void Match(Action<A>? ifFirst = null, Action<Unit>? ifSecond = null)
+        public void Match(Action<A?>? ifFirst = null, Action<Unit>? ifSecond = null)
         {
             if (NonEmpty)
             {
@@ -126,7 +126,7 @@ namespace FuncSharp
             }
         }
 
-        public A Get(Func<Unit, Exception>? otherwise = null)
+        public A? Get(Func<Unit, Exception>? otherwise = null)
         {
             if (NonEmpty)
             {
@@ -139,12 +139,12 @@ namespace FuncSharp
             throw new InvalidOperationException("An empty option does not have a value.");
         }
 
-        public A GetOrDefault()
+        public A? GetOrDefault()
         {
             return Value;
         }
 
-        public IOption<B> Map<B>(Func<A, B> f)
+        public IOption<B> Map<B>(Func<A?, B> f)
         {
             if (NonEmpty)
             {
@@ -153,7 +153,7 @@ namespace FuncSharp
             return Option<B>.Empty;
         }
 
-        public IOption<B> Map<B>(Func<A, B?> f) where B : struct
+        public IOption<B> Map<B>(Func<A?, B?> f) where B : struct
         {
             if (NonEmpty)
             {
@@ -162,7 +162,7 @@ namespace FuncSharp
             return Option<B>.Empty;
         }
 
-        public IOption<B> FlatMap<B>(Func<A, IOption<B>> f)
+        public IOption<B> FlatMap<B>(Func<A?, IOption<B>> f)
         {
             if (NonEmpty)
             {
@@ -171,7 +171,7 @@ namespace FuncSharp
             return Option<B>.Empty;
         }
 
-        public IEnumerable<A> ToEnumerable()
+        public IEnumerable<A?> ToEnumerable()
         {
             if (NonEmpty)
             {

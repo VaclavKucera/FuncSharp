@@ -39,7 +39,7 @@ namespace FuncSharp
         /// <summary>
         /// Canonical representation of the coproduct.
         /// </summary>
-        public static IProduct3<int, int, object> CoproductRepresentation(this ICoproduct c)
+        public static IProduct3<int, int, object?> CoproductRepresentation(this ICoproduct c)
         {
             return Product3.Create(c.CoproductArity, c.CoproductDiscriminator, c.CoproductValue);
         }

@@ -8,7 +8,7 @@ namespace FuncSharp
         /// <summary>
         /// Calculates structural hashcode of the specified values.
         /// </summary>
-        public static int HashCode(IEnumerable<object> values)
+        public static int HashCode(IEnumerable<object?> values)
         {
             unchecked
             {
@@ -24,7 +24,7 @@ namespace FuncSharp
         /// <summary>
         /// Calculates structural hashcode of the specified values.
         /// </summary>
-        public static int HashCode(params object[] values)
+        public static int HashCode(params object?[] values)
         {
             return HashCode(values.AsEnumerable());
         }

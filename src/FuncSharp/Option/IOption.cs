@@ -18,36 +18,36 @@ namespace FuncSharp
         /// <summary>
         /// Returns value of the option if not empty.
         /// </summary>
-        A Get(Func<Unit, Exception>? otherwise = null);
+        A? Get(Func<Unit, Exception>? otherwise = null);
 
         /// <summary>
         /// Returns value of the option if it's present. If not, returns default value of the <typeparamref name="A"/> type.
         /// </summary>
-        A GetOrDefault();
+        A? GetOrDefault();
 
         /// <summary>
         /// Maps value of the current option (if present) into a new value using the specified function and 
         /// returns a new option with that new value.
         /// </summary>
-        IOption<B> Map<B>(Func<A, B> f);
+        IOption<B> Map<B>(Func<A?, B> f);
 
         /// <summary>
         /// Maps value of the current option (if present) into a new value using the specified function and 
         /// returns a new option with that new value.
         /// </summary>
-        IOption<B> Map<B>(Func<A, B?> f)
+        IOption<B> Map<B>(Func<A?, B?> f)
             where B : struct;
 
         /// <summary>
         /// Maps value of the current option (if present) into a new option using the specified function and 
         /// returns that new option.
         /// </summary>
-        IOption<B> FlatMap<B>(Func<A, IOption<B>> f);
+        IOption<B> FlatMap<B>(Func<A?, IOption<B>> f);
 
         /// <summary>
         /// Returns an enumerable with the option value. If the option is empty, returns empty enumerable.
         /// </summary>
         /// <returns></returns>
-        IEnumerable<A> ToEnumerable();
+        IEnumerable<A?> ToEnumerable();
     }
 }
